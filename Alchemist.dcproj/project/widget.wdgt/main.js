@@ -125,9 +125,12 @@ if (window.widget) {
 var wid = widget.identifier;
 var prefType = loadPref(wid+"type",0);
 var prefLocation = loadPref(wid+"location","/opt/local/bin/");
-var prefSeparator = loadPref(wid+"separator","-");
-var prefPrefix = loadPref(wid+"prefix","prefix");
-var prefDateBox = loadPref(wid+"dateBox","false");
+var prefSpacer = loadPref(wid+"spacer","_");
+var prefDateSpacer = loadPref(wid+"dateSpacer","-");
+var prefPrefix = loadPref(wid+"prefix","additional prefix");
+var prefPreBox = loadPref(wid+"preBox",false);
+var prefDateBox = loadPref(wid+"dateBox",false);
+var prefDateReverseBox = loadPref(wid+"dateReverseBox",true);
 
 // Preference Saving
 
@@ -145,9 +148,12 @@ function loadPrefs() {
 //	alert("ready!");
 	document.getElementById("type").object.setSelectedIndex(prefType);
 	document.getElementById("location").value = prefLocation;
-	document.getElementById("separator").value = prefSeparator;
+	document.getElementById("spacer").value = prefSpacer;
+	document.getElementById("dateSpacer").value = prefDateSpacer;
 	document.getElementById("prefix").value = prefPrefix;
-	document.getElementById("dateBox").setChecked = prefDateBox;
+	document.getElementById("preBox").checked = prefPreBox;
+	document.getElementById("dateBox").checked = prefDateBox;
+	document.getElementById("dateReverseBox").checked = prefDateReverseBox;
 }
 
 function savePref(key,value) {
@@ -160,9 +166,12 @@ function updatePrefs() {
 	if (window.widget) {
 		widget.setPreferenceForKey(prefType,wid+"type");
 		widget.setPreferenceForKey(prefLocation,wid+"location");
-		widget.setPreferenceForKey(prefSeparator,wid+"separator");
+		widget.setPreferenceForKey(prefSpacer,wid+"spacer");
+		widget.setPreferenceForKey(prefDateSpacer,wid+"dateSpacer");
 		widget.setPreferenceForKey(prefPrefix,wid+"prefix");
+		widget.setPreferenceForKey(prefPreBox,wid+"preBox");
 		widget.setPreferenceForKey(prefDateBox,wid+"dateBox");
+		widget.setPreferenceForKey(prefDateReverseBox,wid+"dateReverseBox");
 	}
 }
 
@@ -170,9 +179,12 @@ function erasePrefs() {
 	if (window.widget) {
 		widget.setPreferenceForKey(null,wid+"type");
 		widget.setPreferenceForKey(null,wid+"location");
-		widget.setPreferenceForKey(null,wid+"separator");
+		widget.setPreferenceForKey(null,wid+"spacer");
+		widget.setPreferenceForKey(null,wid+"dateSpacer");
 		widget.setPreferenceForKey(null,wid+"prefix");
+		widget.setPreferenceForKey(null,wid+"preBox");
 		widget.setPreferenceForKey(null,wid+"dateBox");
+		widget.setPreferenceForKey(null,wid+"dateReverseBox");
 	}
 }
 
@@ -187,16 +199,34 @@ function updateLocation(event) {
 	prefLocation = document.getElementById("location").value;
 }
 
-function updateSeparator(event) {
-	prefSeparator = document.getElementById("separator").value;
+function updateSpacer(event) {
+	prefSpacer = document.getElementById("spacer").value;
+}
+
+function updateDateSpacer(event) {
+	prefDateSpacer = document.getElementById("dateSpacer").value;
+	updateDateReverseFeedback();
 }
 
 function updatePrefix(event) {
 	prefPrefix = document.getElementById("prefix").value;
 }
 
+function updatePreBox(event) {
+	prefPreBox = document.getElementById("preBox").checked;
+}
+
 function updateDateBox(event) {
 	prefDateBox = document.getElementById("dateBox").checked;
+}
+
+function updateDateReverseBox(event) {
+	prefDateReverseBox = document.getElementById("dateReverseBox").checked;
+	updateDateReverseFeedback();
+}
+
+function updateDateReverseFeedback(event) {
+	document.getElementById("dateReverseFeedback").innerHTML = (prefDateReverseBox)?"yyyy"+prefDateSpacer+"mm"+prefDateSpacer+"dd":"dd"+prefDateSpacer+"mm"+prefDateSpacer+"yyyy";
 }
 
 
@@ -222,35 +252,81 @@ try {
 	uri = uri.replace(/file:\/\/localhost/gi, "");
 	uri = uri.replace(/\%20/gi, "\\ ");
 	uri = uri.split("\n");
-//	alert("uri length: "+uri.length+"\nuri: "+uri.join("\n"));
 	uri = uri.sort(sortAlphaNum);
-//	alert("uri length: "+uri.length+"\nuri: "+uri.join("\n"));
 	for (var i=0; i<uri.length; i++) {
 //		alert("i: "+i+"\nuriPart: "+uri[i]);
-		uriParts[i] = uri[i].match(/(.+?)(\.\w{3,4})$/);
+//		uriParts[i] = uri[i].match(/(.+?)(\.\w{3,4})$/);
+		uriParts[i] = uri[i].match(/(\/.+\/)(.+?)(\.\w{3,4})$/);
 	}
 //	alert("uriParts:\n"+uriParts.join("\n"));
 
+	var type = "";
+	var typeName = "";
+	switch (prefType) {
+		case 0:
+			type = "qt_tools/qt_export_prores422.st";
+			typeName = ".pro422.mov";
+			break;
+		case 1:
+			type = "qt_tools/qt_export_hdv_1080p.st";
+			typeName = ".hdv1080.mov";
+			break;
+		case 2:
+			type = "qt_tools/qt_export_hdv_720p.st";
+			typeName = ".hdv720.mov";
+			break;
+		case 3:
+			type = "qt_tools/qt_export_iphone.st";
+			typeName = ".iphone.m4v";
+			break;
+		case 4:
+			type = "qt_tools/qt_export_ipad.st";
+			typeName = ".ipad.m4v";
+			break;
+		default:
+			type = "qt_tools/qt_export_prores422.st";
+			typeName = ".pro422.mov";
+		}
+
+//	alert("name segments: "+uriParts[i].join("\n"));
+
+	if (prefPreBox || prefDateBox) showStarted(event);
+//	showSuccess(event);
+
 	for (var i=0; i<uri.length; i++) {
-//		alert("file path: "+"/usr/bin/GetFileInfo -d "+uriParts[i][0]);
-//		widget.system("/usr/bin/GetFileInfo -d "+uriParts[i][0], endRename);
-//		var getDate = widget.system("/usr/bin/GetFileInfo -d "+uriParts[i][0], processDate);
+		var name = uriParts[i][0];
+		var newName = name;
+		var rename = (prefPrefix.length > 0 && prefPreBox)?prefPrefix+prefSpacer:"";
 
-		var getDate = widget.system("/usr/bin/GetFileInfo -d "+uriParts[i][0], null);
-//		alert("getDate test: "+getDate.outputString);
-		var date = getDate.outputString;
-		date = date.split(" ");
-		date = date[0].split("/");
-		date = date[2]+prefSeparator+date[0]+prefSeparator+date[1];
-		alert("getDate results: "+date);
+		if (prefDateBox) {
+			var getDate = widget.system("/usr/bin/GetFileInfo -d "+uriParts[i][0], null);
+			var date = getDate.outputString;
+			date = date.split(" ");
+			date = date[0].split("/");
+			date = (prefDateReverseBox)?date[2]+prefDateSpacer+date[0]+prefDateSpacer+date[1]:date[1]+prefDateSpacer+date[0]+prefDateSpacer+date[2];
+			rename = rename+date+prefSpacer;
+		}
 
-		var getDirectory = widget.system("/bin/pwd", null);
-		alert("directory: "+getDirectory.outputString);
-
-		var renameFile = widget.system("/bin/mv -n "+uriParts[i][0]+" "+uriParts[i][1]+".new"+uriParts[i][2], null);
-		alert("mv: "+renameFile.outputString);
+		if (rename.length > 0) {
+			rename = rename.replace(/ /g,"\\ ");
+			name = uriParts[i][1]+rename+uriParts[i][2]+uriParts[i][3];
+			newName = uriParts[i][1]+rename+uriParts[i][2]+typeName;
+	alert("name = "+name);
+	alert("newName = "+newName);
+//			widget.system("/bin/mv -n "+uriParts[i][0]+" "+uriParts[i][1]+rename+uriParts[i][2]+uriParts[i][3], null);
+			widget.system("/bin/mv -n "+uriParts[i][0]+" "+name, null);
+		} else {
+			newName = uriParts[i][1]+rename+uriParts[i][2]+typeName;
+		}
+//	alert("name segments: "+uriParts[i].join("\n"));
+//	alert("name = "+name);
+//	alert("newName = "+newName);
+//		alert("last file? "+(i+1)+"=="+uri.length);
+		if (i+1==uri.length) showSuccess(event);
+//		widget.system("qt_tools/qt_export --loadsettings="+type+" "+name+" "+newName, endHandler2((i+1==uri.length)?true:false));
+		endEncode(name,newName,type,(i+1==uri.length)?true:false);
 	}
-	showSuccess(event);
+//	showSuccess(event);
 } catch (ex) {
 	alert("Problem fetching URI: " + ex);
 	showFail(event);
@@ -259,29 +335,16 @@ try {
 	event.preventDefault();
 }
 
-function endRename(event) {
-alert("endRename event: "+event);
-alert("endRename event.outputString: "+event.outputString);
+function endEncode(name,newName,type,end) {
 try {
-	for (i = 0; i < uri.length; i++){
-//		widget.system("", (i+1!=uri.length)?null:endEncode).outputString;
-	}
-
-	alert("endRename...")
 	showSuccess(event);
-} catch (ex) {
-	alert("Problem creating ICO: " + ex);
-	showFail(event);
-	}
-}
-
-function endEncode(event) {
-try {
-	for (i = 0; i < uri.length; i++){
-//		widget.system("", (i+1!=uri.length)?null:endCleaner).outputString;
-	}
-	alert("endEncode")
-	showSuccess(event);
+//	alert("endEncode name: "+name);
+//	alert("endEncode newName: "+newName);
+//	alert("endEncode type: "+type);
+	alert("endEncode end: "+end);
+	widget.system("qt_tools/qt_export --loadsettings="+type+" "+name+" "+newName, (end)?endHandler:endHandlerFake);
+//	endHandler();
+	return true;
 } catch (ex) {
 	alert("Problem creating ICNS: " + ex);
 	showFail(event);
@@ -294,6 +357,15 @@ function endHandler(output) {
 	showMain();
 }
 
+function endHandlerFake(output) {
+//	alert("output = "+output.outputString);
+	alert("endHandlerFake");
+}
+
+function endHandler2(end) {
+	alert("endHandler, end? "+end);
+	if (end) showMain();
+}
 
 
 function sortName(a, b) {
@@ -351,6 +423,11 @@ function showMain(event) {
 	document.getElementById("stack").object.setCurrentView("main", false, true);
 }
 
+function showStarted(event) {
+	alert("show Started panel!");
+	document.getElementById("stack").object.setCurrentView("started", true, true);
+}
+
 function showSuccess(event) {
 	document.getElementById("stack").object.setCurrentView("success", true, true);
 }
@@ -382,7 +459,6 @@ function getKeyValue(plist, key) {
 // Auto Update
 
 function versionCheck(event) {
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/ return true;
 	var request = new XMLHttpRequest();
 	var address = "http://iaian7.com/files/dashboard/alchemist/version.php?RandomKey=" + Date.parse(new Date());
 	request.onload = function() { versionCheckEnd(request); };

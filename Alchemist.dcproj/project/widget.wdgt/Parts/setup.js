@@ -5,6 +5,8 @@
  code generator otherwise the changes will be lost.
  */
 var dashcodePartSpecs = {
+    "dateReverseText": { "text": "dateReverseText", "view": "DC.Text" },
+    "dateSpacerText": { "text": "dateSpacerText", "view": "DC.Text" },
     "dateText": { "text": "feedback", "view": "DC.Text" },
     "doneSave": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showFront", "rightImageWidth": 5, "text": "done", "view": "DC.View" },
     "download": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "versionDownload", "rightImageWidth": 5, "text": "download", "view": "DC.View" },
@@ -17,9 +19,12 @@ var dashcodePartSpecs = {
     "locationText": { "text": "locationText", "view": "DC.Text" },
     "new": { "text": "new", "view": "DC.Text" },
     "newVersion": { "text": "newVersion", "view": "DC.Text" },
-    "separatorText": { "text": "separatorText", "view": "DC.Text" },
     "skip": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showMain", "rightImageWidth": 5, "text": "skip", "view": "DC.View" },
-    "stack": { "subviewsTransitions": [{ "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }], "view": "DC.StackLayout" },
+    "spacerText": { "text": "spacerText", "view": "DC.Text" },
+    "stack": { "subviewsTransitions": [{ "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }], "view": "DC.StackLayout" },
+    "startedButton": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showMain", "rightImageWidth": 5, "text": "done1", "view": "DC.View" },
+    "startedDetails": { "text": "startedDetails", "view": "DC.Text" },
+    "startedText": { "text": "started", "view": "DC.Text" },
     "successButton": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showMain", "rightImageWidth": 5, "text": "done", "view": "DC.View" },
     "successDetails": { "text": "successDetails", "view": "DC.Text" },
     "successText": { "text": "success", "view": "DC.Text" },
@@ -28,6 +33,8 @@ var dashcodePartSpecs = {
     "wrongButton": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showMain", "rightImageWidth": 5, "text": "done", "view": "DC.View" },
     "wrongText": { "text": "wrong", "view": "DC.Text" }
 };
+
+
 
 
 

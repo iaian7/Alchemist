@@ -6,16 +6,18 @@
  */
 var localizedStrings = {
     "copyrightText": "©2011 John Einselen / Vectorform LLC",
+    "dateReverseText": "date reverse",
+    "dateSpacerText": "date spacer",
+    "dateSpacerText1": "date spacer",
     "done": "done",
+    "done1": "done",
     "download": "download",
     "drop": "drop media files here",
-    "drop1": "drop image files here",
     "dropDetail": "512x512 or larger",
     "fail": "file processing failed,\nplease try again",
     "feedback": "date",
     "iaian7com": "For more information, please visit iaian7.com/dashboard/alchemist",
-    "locationText": "qt_tools install location:",
-    "locationText1": "qt_tools install location:",
+    "locationText": "qt_tools install location",
     "nameFileText": "file sheet prefix",
     "nameSpriteText": "sprite sheet suffix",
     "nameText": "sprite sheet suffix",
@@ -23,18 +25,20 @@ var localizedStrings = {
     "newVersion": "version number\nversion description",
     "optionsText": "flip over for more options",
     "outputText": "output files",
-    "scaleText": "resize algorithm",
-    "separatorText": "text separator:",
-    "seperatorText": "text seperator:",
     "sharpAmount": "amount",
     "sharpSettings": "unsharp\nmask\nsettings",
     "sharpSize": "size",
     "sharpThresh": "threshold",
     "skip": "skip version",
+    "spacerText": "text spacer",
+    "started": "file processing has started, initial setup underway",
+    "startedDetails": "this may take a minute",
     "success": "file processing successful, busy encoding media",
-    "successDetails": "this could take a minute",
+    "successDetails": "may take a few minutes or longer, depending on video length",
     "wrong": "wrong file format\nplease try again"
 };
+
+
 
 
 

@@ -42,29 +42,29 @@ body {
     top: 0px;
     left: 0px;
     right: 0px;
-    bottom: 0px;
     width: auto;
+    bottom: 0px;
     height: auto;
 }
 
 #input {
     position: absolute;
     margin-top: 0px;
-    border-top-left-radius: 5px 5px;
-    border-top-right-radius: 5px 5px;
-    border-bottom-left-radius: 5px 5px;
-    border-bottom-right-radius: 5px 5px;
     border-style: solid;
     font-size: 13px;
     left: 0px;
     top: 0px;
-    margin-bottom: auto;
     right: 0px;
     width: auto;
-    height: 78px;
     border-color: rgb(0, 0, 0);
-    border-width: 0px !important;
+    margin-bottom: auto;
+    height: 78px;
     background-color: rgb(0, 0, 0);
+    border-width: 1px !important;
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
 }
 
 #main {
@@ -99,13 +99,13 @@ body {
     position: absolute;
     color: rgb(255, 255, 255);
     height: 24px;
-    text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     right: 20px;
     margin-left: auto;
     bottom: 20px;
     margin-top: auto;
     width: 55px;
     font-size: 14px;
+    text-shadow: rgb(0, 0, 0) 0px -1px 1px;
 }
 
 #text {
@@ -114,15 +114,15 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     position: absolute;
-    left: 22px;
     font-size: 8pt;
-    top: 208px;
+    opacity: 0.5;
+    height: 12px;
+    left: 20px;
+    margin-top: auto;
+    right: 85px;
     width: auto;
     bottom: 20px;
-    opacity: 0.5;
-    margin-top: auto;
-    height: 12px;
-    right: 85px;
+    text-shadow: none;
 }
 
 #successText {
@@ -134,15 +134,15 @@ body {
     font-size: 12pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     text-align: center;
-    height: auto;
     font-weight: bold;
     font-family: 'Helvetica Neue';
     min-height: 28px;
     width: auto;
     top: 40px;
-    bottom: 60px;
     left: 20px;
     right: 20px;
+    margin-bottom: auto;
+    height: 50px;
 }
 
 #success {
@@ -243,15 +243,15 @@ body {
     font-size: 12pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     text-align: center;
-    height: auto;
     font-weight: bold;
     font-family: 'Helvetica Neue';
     min-height: 28px;
-    top: 48px;
     width: auto;
     left: 10px;
     right: 10px;
-    bottom: 48px;
+    top: 40px;
+    margin-bottom: auto;
+    height: 50px;
 }
 
 #update {
@@ -337,13 +337,16 @@ body {
     position: absolute;
     color: rgb(255, 255, 255);
     font-size: 10pt;
-    text-align: left;
-    left: 22px;
     margin-top: auto;
-    top: 126px;
-    right: 78px;
     width: auto;
-    height: auto;
+    top: 125px;
+    left: 20px;
+    bottom: 35px;
+    height: 30px;
+    right: 80px;
+    text-align: left;
+    text-shadow: rgb(0, 0, 0) 0px -1px 0px;
+    visibility: hidden;
 }
 
 #type {
@@ -375,14 +378,14 @@ body {
     font-family: 'Helvetica Neue';
     text-align: left;
     border-color: rgb(0, 0, 0);
-    margin-right: auto;
-    margin-bottom: auto;
-    border-width: 1px;
-    top: 40px;
     font-size: 10pt;
-    left: 20px;
     width: 256px;
-    background-color: rgba(0, 0, 0, 0.496094);
+    border-width: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    left: 0px;
+    margin-right: auto;
+    top: -2px;
+    margin-bottom: auto;
 }
 
 #locationText {
@@ -393,12 +396,13 @@ body {
     color: rgb(255, 255, 255);
     text-align: left;
     left: 22px;
-    height: 18px;
+    font-size: 10pt;
+    height: 15px;
+    top: 70px;
     margin-bottom: auto;
     right: 22px;
     width: auto;
-    font-size: 10pt;
-    top: 20px;
+    visibility: hidden;
 }
 
 #successDetails {
@@ -414,11 +418,11 @@ body {
     font-size: 10pt;
     text-align: center;
     width: auto;
-    height: auto;
     top: 90px;
-    bottom: 30px;
     left: 20px;
     right: 20px;
+    margin-bottom: auto;
+    height: 35px;
 }
 
 #dateText {
@@ -499,9 +503,9 @@ body {
     border-width: 0px;
     top: 90px;
     width: 60px;
-    right: 2px;
     margin-left: auto;
     margin-bottom: auto;
+    right: 0px;
 }
 
 #date {
@@ -509,14 +513,12 @@ body {
     font-size: 10pt;
     height: 18px;
     position: absolute;
-    right: auto;
-    bottom: auto;
     margin-top: 0px;
     width: 18px;
-    top: 4px;
     left: 4px;
-    margin-bottom: auto;
+    top: 4px;
     margin-right: auto;
+    margin-bottom: auto;
 }
 
 #dateBox {
@@ -553,13 +555,13 @@ body {
     color: rgb(255, 255, 255);
     font-size: 10pt;
     text-align: left;
-    width: 173px;
-    left: 5px;
+    width: 153px;
+    left: 25px;
     top: 2px;
     margin-bottom: auto;
 }
 
-#separator {
+#spacer {
     position: absolute;
     color: rgb(255, 255, 255);
     border-top-left-radius: 5px 5px;
@@ -568,30 +570,270 @@ body {
     border-bottom-right-radius: 5px 5px;
     border-style: solid;
     font-family: 'Helvetica Neue';
-    text-align: left;
     border-color: rgb(0, 0, 0);
-    border-width: 1px;
     font-size: 10pt;
-    width: 256px;
-    background-color: rgba(0, 0, 0, 0.496094);
-    left: 20px;
+    width: 76px;
+    text-align: center;
+    border-width: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    left: 0px;
     margin-right: auto;
-    top: 88px;
+    top: -2px;
     margin-bottom: auto;
 }
 
-#separatorText {
+#spacerText {
     font-family: HelveticaNeue;
     text-overflow: ellipsis;
     overflow: hidden;
     position: absolute;
     color: rgb(255, 255, 255);
-    text-align: left;
     font-size: 10pt;
-    height: 15px;
-    top: 70px;
-    left: 22px;
+    text-align: center;
+    height: 20px;
+    left: 20px;
+    top: 20px;
     margin-bottom: auto;
-    right: 22px;
+    right: 200px;
     width: auto;
+    text-shadow: rgb(0, 0, 0) 0px -1px 0px;
+}
+
+#dateSpacer {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    border-style: solid;
+    font-family: 'Helvetica Neue';
+    border-color: rgb(0, 0, 0);
+    font-size: 10pt;
+    text-align: center;
+    width: 74px;
+    border-width: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    left: 1px;
+    margin-right: auto;
+    top: -2px;
+    margin-bottom: auto;
+}
+
+#dateSpacerText {
+    font-family: HelveticaNeue;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    font-size: 10pt;
+    text-align: center;
+    left: 110px;
+    height: 20px;
+    top: 20px;
+    margin-bottom: auto;
+    right: 110px;
+    width: auto;
+    text-shadow: rgb(0, 0, 0) 0px -1px 0px;
+}
+
+#box3 {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    margin-top: 0px;
+    background-color: rgba(0, 0, 0, 0.496094);
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    height: 18px;
+    left: 20px;
+    top: 40px;
+    margin-bottom: auto;
+    right: 200px;
+    width: auto;
+}
+
+#box4 {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    margin-top: 0px;
+    background-color: rgba(0, 0, 0, 0.496094);
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    height: 18px;
+    left: 110px;
+    top: 40px;
+    margin-bottom: auto;
+    right: 110px;
+    width: auto;
+}
+
+#box5 {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    margin-top: 0px;
+    background-color: rgba(0, 0, 0, 0.496094);
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    height: 18px;
+    left: 200px;
+    top: 40px;
+    margin-bottom: auto;
+    right: 20px;
+    width: auto;
+}
+
+#dateReverseText {
+    font-family: HelveticaNeue;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    font-size: 10pt;
+    text-align: center;
+    height: 20px;
+    left: 200px;
+    top: 20px;
+    margin-bottom: auto;
+    right: 20px;
+    width: auto;
+    text-shadow: rgb(0, 0, 0) 0px -1px 0px;
+}
+
+#dateReverse {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 0px;
+    left: 0px;
+}
+
+#dateReverseFeedback {
+    position: absolute;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    right: 2px;
+    bottom: 2px;
+    top: 2px;
+    text-shadow: rgb(0, 0, 0) 0px -1px 0px;
+}
+
+#box6 {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    margin-top: 0px;
+    background-color: rgba(0, 0, 0, 0.496094);
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    height: 18px;
+    left: 20px;
+    top: 92px;
+    margin-bottom: auto;
+    right: 20px;
+    width: auto;
+    visibility: hidden;
+}
+
+#pre {
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    margin-top: 0px;
+    width: 18px;
+    top: 4px;
+    left: 4px;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+#preBox {
+    margin-left: 3px;
+    height: auto;
+    width: auto;
+    margin-right: 3px;
+}
+
+#started {
+    width: 100%;
+    min-height: 150px;
+    display: none;
+    position: relative;
+}
+
+#startedText {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    color: rgb(255, 255, 255);
+    font-size: 12pt;
+    text-shadow: rgb(0, 0, 0) 0px -1px 1px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    min-height: 50px;
+    left: 20px;
+    height: 50px;
+    top: 40px;
+    margin-bottom: auto;
+    right: 20px;
+    width: auto;
+}
+
+#startedDetails {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(0, 0, 0) 0px -1px 1px;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    font-size: 10pt;
+    text-align: center;
+    min-height: 30px;
+    left: 20px;
+    height: 30px;
+    top: 90px;
+    margin-bottom: auto;
+    right: 20px;
+    width: auto;
+}
+
+#startedButton {
+    font-family: HelveticaNeue-Bold;
+    text-align: center;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    height: 24px;
+    text-shadow: rgb(0, 0, 0) 0px -1px 1px;
+    font-size: 14px;
+    width: 260px;
+    left: 0px;
+    bottom: 0px;
+    margin-top: auto;
 }
