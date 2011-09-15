@@ -264,28 +264,48 @@ try {
 	var typeName = "";
 	switch (prefType) {
 		case 0:
-			type = "qt_tools/qt_export_prores422.st";
+			type = "qt_export_prores422.st";
 			typeName = ".pro422.mov";
 			break;
 		case 1:
-			type = "qt_tools/qt_export_hdv_1080p.st";
+			type = "qt_export_hdv_1080p.st";
 			typeName = ".hdv1080.mov";
 			break;
 		case 2:
-			type = "qt_tools/qt_export_hdv_720p.st";
+			type = "qt_export_hdv_720p.st";
 			typeName = ".hdv720.mov";
 			break;
 		case 3:
-			type = "qt_tools/qt_export_iphone.st";
-			typeName = ".iphone.m4v";
-			break;
-		case 4:
-			type = "qt_tools/qt_export_ipad.st";
-			typeName = ".ipad.m4v";
+			type = "qt_export_aic.st";
+			typeName = ".aic.mov";
 			break;
 		default:
-			type = "qt_tools/qt_export_prores422.st";
-			typeName = ".pro422.mov";
+			type = [];
+			typeName = [];
+			if (prefBatch1) {
+				type.push("qt_export_youtube.st");
+				typeName.push(".hd.mp4");
+			}
+			if (prefBatch2) {
+				type.push("ffmpeg");
+				typeName.push(".hd.wmv");
+			}
+			if (prefBatch3) {
+				type.push("qt_export_540p.st");
+				typeName.push(".540p.mp4");
+			}
+			if (prefBatch4) {
+				type.push("ffmpeg");
+				typeName.push(".540p.wmv");
+			}
+			if (prefBatch5) {
+				type.push("qt_export_ios.st");
+				typeName.push(".ios.m4v");
+			}
+			if (prefBatch6) {
+				type.push("ffmpeg");
+				typeName.push(".360p.wmv");
+			}
 		}
 
 //	alert("name segments: "+uriParts[i].join("\n"));
@@ -342,7 +362,7 @@ try {
 //	alert("endEncode newName: "+newName);
 //	alert("endEncode type: "+type);
 	alert("endEncode end: "+end);
-	widget.system("qt_tools/qt_export --loadsettings="+type+" "+name+" "+newName, (end)?endHandler:endHandlerFake);
+	widget.system("qt_tools/qt_export --loadsettings=qt_tools/"+type+" "+name+" "+newName, (end)?endHandler:endHandlerFake);
 //	endHandler();
 	return true;
 } catch (ex) {

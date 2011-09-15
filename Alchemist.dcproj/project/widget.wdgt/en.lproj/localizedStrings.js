@@ -5,6 +5,7 @@
  code generator otherwise the changes will be lost.
  */
 var localizedStrings = {
+    "batchText": "batch output formats",
     "copyrightText": "©2011 John Einselen / Vectorform LLC",
     "dateReverseText": "date reverse",
     "dateSpacerText": "date spacer",
@@ -17,7 +18,9 @@ var localizedStrings = {
     "fail": "file processing failed,\nplease try again",
     "feedback": "date",
     "iaian7com": "For more information, please visit iaian7.com/dashboard/alchemist",
-    "locationText": "qt_tools install location",
+    "location2Text": "ffmpeg",
+    "locationText": "qt_tools",
+    "locationText1": "ffmpeg",
     "nameFileText": "file sheet prefix",
     "nameSpriteText": "sprite sheet suffix",
     "nameText": "sprite sheet suffix",
@@ -31,12 +34,14 @@ var localizedStrings = {
     "sharpThresh": "threshold",
     "skip": "skip version",
     "spacerText": "text spacer",
+    "spacerText1": "text spacer",
     "started": "file processing has started, initial setup underway",
     "startedDetails": "this may take a minute",
     "success": "file processing successful, busy encoding media",
     "successDetails": "may take a few minutes or longer, depending on video length",
     "wrong": "wrong file format\nplease try again"
 };
+
 
 
 

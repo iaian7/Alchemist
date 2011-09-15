@@ -5,6 +5,7 @@
  code generator otherwise the changes will be lost.
  */
 var dashcodePartSpecs = {
+    "batchText": { "text": "batchText", "view": "DC.Text" },
     "dateReverseText": { "text": "dateReverseText", "view": "DC.Text" },
     "dateSpacerText": { "text": "dateSpacerText", "view": "DC.Text" },
     "dateText": { "text": "feedback", "view": "DC.Text" },
@@ -16,6 +17,7 @@ var dashcodePartSpecs = {
     "iaian7com": { "text": "iaian7com", "view": "DC.Text" },
     "image": { "view": "DC.ImageLayout" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack", "view": "DC.View" },
+    "location2Text": { "text": "location2Text", "view": "DC.Text" },
     "locationText": { "text": "locationText", "view": "DC.Text" },
     "new": { "text": "new", "view": "DC.Text" },
     "newVersion": { "text": "newVersion", "view": "DC.Text" },
@@ -29,10 +31,11 @@ var dashcodePartSpecs = {
     "successDetails": { "text": "successDetails", "view": "DC.Text" },
     "successText": { "text": "success", "view": "DC.Text" },
     "text": { "text": "copyrightText", "view": "DC.Text" },
-    "type": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "name": "type", "onchange": "updateType", "options": [["ProRes422", "0"], ["HDV 1080p", "1"], ["HDV 720p", "2"], ["iPhone", "3"], ["iPad", "4"]], "rightImageWidth": 16, "view": "DC.View" },
+    "type": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "name": "type", "onchange": "updateType", "options": [["ProRes422", "0"], ["HDV 1080p", "1"], ["HDV 720p", "2"], ["Apple Intermediate Codec", "3"], ["Batch output formats", "4"]], "rightImageWidth": 16, "view": "DC.View" },
     "wrongButton": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showMain", "rightImageWidth": 5, "text": "done", "view": "DC.View" },
     "wrongText": { "text": "wrong", "view": "DC.Text" }
 };
+
 
 
 
