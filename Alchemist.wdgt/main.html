@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="Parts/Transitions.css">
+    <script type="text/javascript" src="Parts/parts.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="localizedStrings.js" charset="utf-8"></script>
+    <script type="text/javascript" src="main.js" charset="utf-8"></script>
+</head>
+<body onload="load();">
+    <div id="front">
+        <img id="frontImg" src="Parts/Images/front.png" alt="">
+        <div id="stack"><div id="main">
+                <div id="input" ondrop="dragDrop(event)" ondragover="dragOver(event)" ondragenter="dragEnter(event)">
+                    <div id="image"><img src="Images/Icon.png" id="inner_image"></div>
+                    <div id="drop"></div>
+                </div>
+                <div id="box1">
+                    <div id="pre">
+                        <input type="checkbox" name="Checkbox" checked="checked" id="preBox" onchange="updatePreBox(event)">
+                    </div>
+                    <input type="text" name="prefix" value="additional prefix" id="prefix" onkeyup="updatePrefix(event)" onfocus="selectIt(event)">
+                </div>
+                <div id="box2">
+                    <div id="date">
+                        <input type="checkbox" name="Checkbox" checked="checked" id="dateBox" onchange="updateDateBox(event)">
+                    </div>
+                    <div id="dateText"></div>
+                </div>
+                <div id="type"></div>
+            </div><div id="started">
+                <div id="startedText"></div>
+                <div id="startedDetails"></div>
+                <div id="startedButton"></div>
+            </div><div id="success">
+                <div id="successText"></div>
+                <div id="successDetails"></div>
+                <div id="successButton"></div>
+            </div><div id="fail" style="display: block; ">
+                <div id="failText"></div>
+                <div id="failButton"></div>
+            </div><div id="wrong" style="display: block; ">
+                <div id="wrongText"></div>
+                <div id="wrongButton"></div>
+            </div><div id="update">
+                <div id="new"></div>
+                <div id="newVersion"></div>
+                <div id="skip"></div>
+                <div id="download"></div>
+            </div></div>
+        <div id="info"></div>
+    </div>
+    <div id="back">
+        <div id="text"></div>
+        <div id="iaian7com" onclick="iaian7(event)"></div>
+        <img id="backImg" src="Parts/Images/back.png" alt="">
+        <div id="spacerText"></div>
+        <div id="box3">
+            <input type="text" name="spacer" value="_" id="spacer" onchange="updateSpacer(event)" onkeyup="updateSpacer(event)">
+        </div>
+        <div id="dateSpacerText"></div>
+        <div id="box4">
+            <input type="text" name="dateSpacer" value="-" id="dateSpacer" onchange="updateDateSpacer(event)" onkeyup="updateDateSpacer(event)">
+        </div>
+        <div id="dateReverseText"></div>
+        <div id="box5">
+            <div id="dateReverse">
+                <input type="checkbox" name="Checkbox" checked="checked" id="dateReverseBox" onchange="updateDateReverseBox(event)">
+                <div id="dateReverseFeedback">yyyy-mm-dd</div>
+            </div>
+        </div>
+        <div id="batchText"></div>
+        <div id="box6">
+            <div id="checkbox">
+                <input type="checkbox" name="Checkbox" checked="checked" id="batch1" disabled="disabled">
+                <div id="div">fullsize mp4</div>
+            </div>
+            <div id="checkbox1">
+                <input type="checkbox" name="Checkbox" checked="checked" id="batch2" disabled="disabled">
+                <div id="div1">540p mp4</div>
+            </div>
+            <div id="checkbox2">
+                <input type="checkbox" name="Checkbox" checked="checked" id="batch3" disabled="disabled">
+                <div id="div2">fullsize wmv</div>
+            </div>
+            <div id="checkbox3">
+                <input type="checkbox" name="Checkbox" checked="checked" id="batch4" disabled="disabled">
+                <div id="div3">540p wmv</div>
+            </div>
+            <div id="checkbox4">
+                <input type="checkbox" name="Checkbox" checked="checked" id="batch5" disabled="disabled">
+                <div id="div4">iOS large</div>
+            </div>
+            <div id="checkbox5">
+                <input type="checkbox" name="Checkbox" checked="checked" id="batch6" disabled="disabled">
+                <div id="div5">iOS small</div>
+            </div>
+        </div>
+        <div id="locationText"></div>
+        <div id="box7">
+            <input type="text" name="location" value="/opt/local/bin/" id="location" onchange="updateLocation(event)" onkeyup="updateLocation(event)" disabled="disabled">
+        </div>
+        <div id="location2Text"></div>
+        <div id="box8">
+            <input type="text" name="location2" value="/opt/local/bin/" id="location2" onchange="updateLocation(event)" onkeyup="updateLocation(event)" disabled="disabled">
+        </div>
+        <div id="doneSave"></div>
+    </div>
+</body>
+</html>
