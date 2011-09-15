@@ -34,7 +34,7 @@ function remove()
 function hide()
 {
 	// Stop any timers to prevent CPU usage
-	savePrefs();
+//	savePrefs();
 }
 
 //
@@ -280,6 +280,7 @@ try {
 			typeName = ".aic.mov";
 			break;
 		default:
+			return showFail(event);
 			type = [];
 			typeName = [];
 			if (prefBatch1) {
@@ -287,12 +288,12 @@ try {
 				typeName.push(".hd.mp4");
 			}
 			if (prefBatch2) {
-				type.push("ffmpeg");
-				typeName.push(".hd.wmv");
-			}
-			if (prefBatch3) {
 				type.push("qt_export_540p.st");
 				typeName.push(".540p.mp4");
+			}
+			if (prefBatch3) {
+				type.push("ffmpeg");
+				typeName.push(".hd.wmv");
 			}
 			if (prefBatch4) {
 				type.push("ffmpeg");
@@ -300,11 +301,11 @@ try {
 			}
 			if (prefBatch5) {
 				type.push("qt_export_ios.st");
-				typeName.push(".ios.m4v");
+				typeName.push(".appletv.m4v");
 			}
 			if (prefBatch6) {
 				type.push("ffmpeg");
-				typeName.push(".360p.wmv");
+				typeName.push(".ios.wmv");
 			}
 		}
 
@@ -361,8 +362,37 @@ try {
 //	alert("endEncode name: "+name);
 //	alert("endEncode newName: "+newName);
 //	alert("endEncode type: "+type);
-	alert("endEncode end: "+end);
 	widget.system("qt_tools/qt_export --loadsettings=qt_tools/"+type+" "+name+" "+newName, (end)?endHandler:endHandlerFake);
+	alert("qt_tools/qt_export --loadsettings=qt_tools/"+type+" "+name+" "+newName);
+	alert("endEncode end: "+end);
+//	endHandler();
+	return true;
+} catch (ex) {
+	alert("Problem creating ICNS: " + ex);
+	showFail(event);
+	}
+}
+
+function pcEncode(name,newName,type,end) {
+try {
+	showSuccess(event);
+	widget.system("/usr/bin/pcastaction encode --prb --input="+name+" --output="+newName+" --encoder="+type, (end)?endHandler:endHandlerFake);
+	alert("/usr/bin/pcastaction encode --prb --input="+name+" --output="+newName+" --encoder="+type);
+	alert("pcEncode end: "+end);
+//	endHandler();
+	return true;
+} catch (ex) {
+	alert("Problem creating ICNS: " + ex);
+	showFail(event);
+	}
+}
+
+function ffEncode(name,newName,type,end) {
+try {
+	showSuccess(event);
+	widget.system("/usr/bin/pcastaction encode --prb --input="+name+" --output="+newName+" --encoder="+type, (end)?endHandler:endHandlerFake);
+	alert("/usr/bin/pcastaction encode --prb --input="+name+" --output="+newName+" --encoder="+type);
+	alert("pcEncode end: "+end);
 //	endHandler();
 	return true;
 } catch (ex) {
@@ -479,6 +509,7 @@ function getKeyValue(plist, key) {
 // Auto Update
 
 function versionCheck(event) {
+//	return null;
 	var request = new XMLHttpRequest();
 	var address = "http://iaian7.com/files/dashboard/alchemist/version.php?RandomKey=" + Date.parse(new Date());
 	request.onload = function() { versionCheckEnd(request); };
