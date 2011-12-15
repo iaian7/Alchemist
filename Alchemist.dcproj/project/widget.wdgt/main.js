@@ -125,6 +125,8 @@ if (window.widget) {
 var wid = widget.identifier;
 var prefType = loadPref(wid+"type",0);
 var prefLocation = loadPref(wid+"location","/opt/local/bin/");
+var prefLocation2 = loadPref(wid+"location2","/opt/local/bin/");
+var prefLocation3 = loadPref(wid+"location3","/usr/local/bin/");
 var prefSpacer = loadPref(wid+"spacer","_");
 var prefDateSpacer = loadPref(wid+"dateSpacer","-");
 var prefPrefix = loadPref(wid+"prefix","additional prefix");
@@ -148,6 +150,8 @@ function loadPrefs() {
 //	alert("ready!");
 	document.getElementById("type").object.setSelectedIndex(prefType);
 	document.getElementById("location").value = prefLocation;
+	document.getElementById("location2").value = prefLocation2;
+	document.getElementById("location3").value = prefLocation3;
 	document.getElementById("spacer").value = prefSpacer;
 	document.getElementById("dateSpacer").value = prefDateSpacer;
 	document.getElementById("prefix").value = prefPrefix;
@@ -166,6 +170,8 @@ function updatePrefs() {
 	if (window.widget) {
 		widget.setPreferenceForKey(prefType,wid+"type");
 		widget.setPreferenceForKey(prefLocation,wid+"location");
+		widget.setPreferenceForKey(prefLocation2,wid+"location2");
+		widget.setPreferenceForKey(prefLocation3,wid+"location3");
 		widget.setPreferenceForKey(prefSpacer,wid+"spacer");
 		widget.setPreferenceForKey(prefDateSpacer,wid+"dateSpacer");
 		widget.setPreferenceForKey(prefPrefix,wid+"prefix");
@@ -179,6 +185,8 @@ function erasePrefs() {
 	if (window.widget) {
 		widget.setPreferenceForKey(null,wid+"type");
 		widget.setPreferenceForKey(null,wid+"location");
+		widget.setPreferenceForKey(null,wid+"location2");
+		widget.setPreferenceForKey(null,wid+"location3");
 		widget.setPreferenceForKey(null,wid+"spacer");
 		widget.setPreferenceForKey(null,wid+"dateSpacer");
 		widget.setPreferenceForKey(null,wid+"prefix");
@@ -197,6 +205,14 @@ function updateType(event) {
 
 function updateLocation(event) {
 	prefLocation = document.getElementById("location").value;
+}
+
+function updateLocation2(event) {
+	prefLocation2 = document.getElementById("location2").value;
+}
+
+function updateLocation3(event) {
+	prefLocation3 = document.getElementById("location3").value;
 }
 
 function updateSpacer(event) {

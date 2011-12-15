@@ -31,7 +31,7 @@
                     </div>
                     <div id="dateText" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis"></div>
                 </div>
-                <div apple-part="com.apple.Dashcode.part.roundedpopupbutton" class="apple-no-children" apple-style="image-theme: 0; image-shape: 3; image-button-type: 1; image-opacity: 1.00; image-top-color: 0,0,0,1; image-bottom-color: 0.6,0.6,0.6,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0,0,0,1; image-border-width: 0; shine-on: 1; shine-strength: 0.20; shine-alpha-level: 1.00; shine-height: 0.60; glass-arc-height: 0.00; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.5; embossed-highlight: 0.5; shadow-include-shadow: 0;" id="type"></div>
+                <div apple-part="com.apple.Dashcode.part.roundedpopupbutton" class="apple-no-children" apple-style="image-theme: 0; image-shape: 3; image-button-type: 1; image-opacity: 1.00; image-top-color: 0,0,0,1; image-bottom-color: 0.6,0.6,0.6,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0,0,0,1; image-border-width: 1; shine-on: 1; shine-strength: 0.25; shine-alpha-level: 1.00; shine-height: 0.50; glass-arc-height: 0.00; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.5; embossed-highlight: 0.5; shadow-include-shadow: 0;" id="type"></div>
             </div><div id="started" apple-part-locked="true">
                 <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="startedText"></div>
                 <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="startedDetails"></div>
@@ -55,17 +55,11 @@
         <div class="apple-no-children" id="info" apple-part="com.apple.Dashcode.part.infobutton" apple-default-image-visibility="hidden"></div>
     </div>
     <div id="back">
-        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="text"></div>
-        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="iaian7com" onclick="iaian7(event)" apple-style="part-height-dependent: true;"></div>
         <img id="backImg" src="Parts/Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.backimage" apple-style=" image-radius: 10,10,10,10; image-border: 1; image-border-color: 0,0,0,0.5; image-border-width: 1; shadow-include-shadow: 1; shadow-offset: -1.00,-6.00; shadow-color: 0,0,0,0.3333;">
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="spacerText"></div>
-        <div id="box3" apple-part="com.apple.Dashcode.part.box">
-            <input type="text" name="spacer" value="_" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="spacer" onchange="updateSpacer(event)" onkeyup="updateSpacer(event)">
-        </div>
+        <input type="text" name="spacer" value="_" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="spacer" onchange="updateSpacer(event)" onkeyup="updateSpacer(event)">
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="dateSpacerText"></div>
-        <div id="box4" apple-part="com.apple.Dashcode.part.box">
-            <input type="text" name="dateSpacer" value="-" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="dateSpacer" onchange="updateDateSpacer(event)" onkeyup="updateDateSpacer(event)">
-        </div>
+        <input type="text" name="dateSpacer" value="-" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="dateSpacer" onchange="updateDateSpacer(event)" onkeyup="updateDateSpacer(event)">
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="dateReverseText"></div>
         <div id="box5" apple-part="com.apple.Dashcode.part.box">
             <div id="dateReverse" apple-part="com.apple.Dashcode.part.checkboxbutton" apple-group="checkbox">
@@ -73,42 +67,15 @@
                 <div id="dateReverseFeedback">yyyy-mm-dd</div>
             </div>
         </div>
-        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="batchText"></div>
-        <div id="box6" apple-part="com.apple.Dashcode.part.box">
-            <div id="checkbox" apple-part="com.apple.Dashcode.part.checkboxbutton" apple-group="checkbox">
-                <input type="checkbox" name="Checkbox" checked="checked" apple-part="com.apple.Dashcode.part.input" id="batch1" apple-group="checkbox" disabled="disabled">
-                <div id="div">fullsize mp4</div>
-            </div>
-            <div id="checkbox1" apple-part="com.apple.Dashcode.part.checkboxbutton" apple-group="checkbox">
-                <input type="checkbox" name="Checkbox" checked="checked" apple-part="com.apple.Dashcode.part.input" id="batch2" apple-group="checkbox" disabled="disabled">
-                <div id="div1">540p mp4</div>
-            </div>
-            <div id="checkbox2" apple-part="com.apple.Dashcode.part.checkboxbutton" apple-group="checkbox">
-                <input type="checkbox" name="Checkbox" checked="checked" apple-part="com.apple.Dashcode.part.input" id="batch3" apple-group="checkbox" disabled="disabled">
-                <div id="div2">fullsize wmv</div>
-            </div>
-            <div id="checkbox3" apple-part="com.apple.Dashcode.part.checkboxbutton" apple-group="checkbox">
-                <input type="checkbox" name="Checkbox" checked="checked" apple-part="com.apple.Dashcode.part.input" id="batch4" apple-group="checkbox" disabled="disabled">
-                <div id="div3">540p wmv</div>
-            </div>
-            <div id="checkbox4" apple-part="com.apple.Dashcode.part.checkboxbutton" apple-group="checkbox">
-                <input type="checkbox" name="Checkbox" checked="checked" apple-part="com.apple.Dashcode.part.input" id="batch5" apple-group="checkbox" disabled="disabled">
-                <div id="div4">iOS large</div>
-            </div>
-            <div id="checkbox5" apple-part="com.apple.Dashcode.part.checkboxbutton" apple-group="checkbox">
-                <input type="checkbox" name="Checkbox" checked="checked" apple-part="com.apple.Dashcode.part.input" id="batch6" apple-group="checkbox" disabled="disabled">
-                <div id="div5">iOS small</div>
-            </div>
-        </div>
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="locationText"></div>
-        <div id="box7" apple-part="com.apple.Dashcode.part.box">
-            <input type="text" name="location" value="/opt/local/bin/" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="location" onchange="updateLocation(event)" onkeyup="updateLocation(event)" disabled="disabled">
-        </div>
+        <input type="text" name="location" value="/opt/local/bin/" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="location" onchange="updateLocation(event)" onkeyup="updateLocation(event)">
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="location2Text"></div>
-        <div id="box8" apple-part="com.apple.Dashcode.part.box">
-            <input type="text" name="location2" value="/opt/local/bin/" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="location2" onchange="updateLocation(event)" onkeyup="updateLocation(event)" disabled="disabled">
-        </div>
-        <div apple-part="com.apple.Dashcode.part.roundedtextbutton" class="apple-no-children" apple-style="image-theme: 0; image-shape: 3; image-button-type: 0; image-opacity: 1.00; image-top-color: 0,0,0,1; image-bottom-color: 0.6,0.6,0.6,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0,0,0,0.5; image-border-width: 1; shine-on: 1; shine-strength: 0.20; shine-alpha-level: 1.00; shine-height: 0.60; glass-arc-height: 0.00; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.5; embossed-highlight: 0.5; shadow-include-shadow: 0;" id="doneSave"></div>
+        <input type="text" name="location2" value="/opt/local/bin/" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="location2" onchange="updateLocation2(event)" onkeyup="updateLocation2(event)">
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="location3Text"></div>
+        <input type="text" name="location3" value="/usr/local/bin/" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="location3" onchange="updateLocation3(event)" onkeyup="updateLocation3(event)">
+        <div apple-part="com.apple.Dashcode.part.roundedtextbutton" class="apple-no-children" apple-style="image-theme: 0; image-shape: 3; image-button-type: 0; image-opacity: 1.00; image-top-color: 0,0,0,0.5; image-bottom-color: 0.6,0.6,0.6,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0,0,0,1; image-border-width: 1; shine-on: 1; shine-strength: 0.25; shine-alpha-level: 1.00; shine-height: 0.50; glass-arc-height: 0.00; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.5; embossed-highlight: 0.5; shadow-include-shadow: 0;" id="doneSave"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="iaian7com" onclick="iaian7(event)"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis" id="text"></div>
     </div>
 </body>
 </html>
