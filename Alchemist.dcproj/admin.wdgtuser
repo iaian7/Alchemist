@@ -507,14 +507,29 @@
 				<integer>1</integer>
 				<integer>3</integer>
 			</array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>0</integer>
+				<integer>3</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>0</integer>
+				<integer>3</integer>
+				<integer>0</integer>
+			</array>
 		</array>
 		<key>Objects view last selections</key>
 		<array/>
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>view1</string>
-			<string>main</string>
 			<string>front</string>
+			<string>main</string>
 		</array>
 	</dict>
 </dict>

@@ -129,8 +129,10 @@ var prefLocation2 = loadPref(wid+"location2","/opt/local/bin/");
 var prefLocation3 = loadPref(wid+"location3","/usr/local/bin/");
 var prefSpacer = loadPref(wid+"spacer","_");
 var prefDateSpacer = loadPref(wid+"dateSpacer","-");
-var prefPrefix = loadPref(wid+"prefix","additional prefix");
+var prefPrefix = loadPref(wid+"prefix","prefix");
 var prefPreBox = loadPref(wid+"preBox",false);
+var prefSuffix = loadPref(wid+"suffix","suffix");
+var prefSufBox = loadPref(wid+"sufBox",false);
 var prefDateBox = loadPref(wid+"dateBox",false);
 var prefDateReverseBox = loadPref(wid+"dateReverseBox",true);
 
@@ -156,6 +158,8 @@ function loadPrefs() {
 	document.getElementById("dateSpacer").value = prefDateSpacer;
 	document.getElementById("prefix").value = prefPrefix;
 	document.getElementById("preBox").checked = prefPreBox;
+	document.getElementById("suffix").value = prefsuffix;
+	document.getElementById("sufBox").checked = prefSufBox;
 	document.getElementById("dateBox").checked = prefDateBox;
 	document.getElementById("dateReverseBox").checked = prefDateReverseBox;
 }
@@ -176,6 +180,8 @@ function updatePrefs() {
 		widget.setPreferenceForKey(prefDateSpacer,wid+"dateSpacer");
 		widget.setPreferenceForKey(prefPrefix,wid+"prefix");
 		widget.setPreferenceForKey(prefPreBox,wid+"preBox");
+		widget.setPreferenceForKey(prefSuffix,wid+"suffix");
+		widget.setPreferenceForKey(prefSufBox,wid+"sufBox");
 		widget.setPreferenceForKey(prefDateBox,wid+"dateBox");
 		widget.setPreferenceForKey(prefDateReverseBox,wid+"dateReverseBox");
 	}
@@ -191,6 +197,8 @@ function erasePrefs() {
 		widget.setPreferenceForKey(null,wid+"dateSpacer");
 		widget.setPreferenceForKey(null,wid+"prefix");
 		widget.setPreferenceForKey(null,wid+"preBox");
+		widget.setPreferenceForKey(null,wid+"suffix");
+		widget.setPreferenceForKey(null,wid+"sufBox");
 		widget.setPreferenceForKey(null,wid+"dateBox");
 		widget.setPreferenceForKey(null,wid+"dateReverseBox");
 	}
@@ -230,6 +238,14 @@ function updatePrefix(event) {
 
 function updatePreBox(event) {
 	prefPreBox = document.getElementById("preBox").checked;
+}
+
+function updateSuffix(event) {
+	prefSuffix = document.getElementById("Suffix").value;
+}
+
+function updateSufBox(event) {
+	prefSufBox = document.getElementById("SufBox").checked;
 }
 
 function updateDateBox(event) {
@@ -327,6 +343,11 @@ try {
 
 //	alert("name segments: "+uriParts[i].join("\n"));
 
+//***************
+//***************
+// What does this do, is it really necessary, and do I need to add prefSufBox?
+//***************
+//***************
 	if (prefPreBox || prefDateBox) showStarted(event);
 //	showSuccess(event);
 
@@ -334,6 +355,7 @@ try {
 		var name = uriParts[i][0];
 		var newName = name;
 		var rename = (prefPrefix.length > 0 && prefPreBox)?prefPrefix+prefSpacer:"";
+		var rename2 = (prefSuffix.length > 0 && prefSufBox)?prefSpacer+prefSuffix:"";
 
 		if (prefDateBox) {
 			var getDate = widget.system("/usr/bin/GetFileInfo -d "+uriParts[i][0], null);
@@ -344,16 +366,17 @@ try {
 			rename = rename+date+prefSpacer;
 		}
 
-		if (rename.length > 0) {
+		if (rename.length > 0 || rename2.length > 0) {
 			rename = rename.replace(/ /g,"\\ ");
+			rename2 = rename2.replace(/ /g,"\\ ");
 			name = uriParts[i][1]+rename+uriParts[i][2]+uriParts[i][3];
-			newName = uriParts[i][1]+rename+uriParts[i][2]+typeName;
+			newName = uriParts[i][1]+rename+uriParts[i][2]+rename2+typeName;
 	alert("name = "+name);
 	alert("newName = "+newName);
 //			widget.system("/bin/mv -n "+uriParts[i][0]+" "+uriParts[i][1]+rename+uriParts[i][2]+uriParts[i][3], null);
 			widget.system("/bin/mv -n "+uriParts[i][0]+" "+name, null);
 		} else {
-			newName = uriParts[i][1]+rename+uriParts[i][2]+typeName;
+			newName = uriParts[i][1]+rename+uriParts[i][2]+rename2+typeName;
 		}
 //	alert("name segments: "+uriParts[i].join("\n"));
 //	alert("name = "+name);

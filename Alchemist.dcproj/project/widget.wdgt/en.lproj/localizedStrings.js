@@ -14,7 +14,7 @@ var localizedStrings = {
     "done1": "done",
     "download": "download",
     "drop": "drop media files here",
-    "dropDetail": "512x512 or larger",
+    "dropDetail": "high bitrate MP4 prefered",
     "fail": "file processing failed,\nplease try again",
     "feedback": "date",
     "iaian7com": "For more information, please visit iaian7.com/dashboard/alchemist",
