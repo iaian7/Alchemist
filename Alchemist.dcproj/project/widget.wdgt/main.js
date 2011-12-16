@@ -158,7 +158,7 @@ function loadPrefs() {
 	document.getElementById("dateSpacer").value = prefDateSpacer;
 	document.getElementById("prefix").value = prefPrefix;
 	document.getElementById("preBox").checked = prefPreBox;
-	document.getElementById("suffix").value = prefsuffix;
+	document.getElementById("suffix").value = prefSuffix;
 	document.getElementById("sufBox").checked = prefSufBox;
 	document.getElementById("dateBox").checked = prefDateBox;
 	document.getElementById("dateReverseBox").checked = prefDateReverseBox;
@@ -565,7 +565,7 @@ function versionCheckEnd(request){
 //		alert("bundleVersion: "+bundleVersion);
 //		alert("websiteVersion: "+websiteVersion);
 
-		if (websiteVersion != bundleVersion) {
+		if (websiteVersion > bundleVersion) {
 			document.getElementById("newVersion").innerHTML = "version "+versions[0]+"<br/>"+versions[1];
 			return showUpdate();
 		} else {

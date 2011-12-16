@@ -18,18 +18,26 @@
                 <div id="input" ondrop="dragDrop(event)" ondragover="dragOver(event)" ondragenter="dragEnter(event)">
                     <div id="image"><img src="Images/Icon.png" id="inner_image"></div>
                     <div id="drop"></div>
+                    <div id="dropDetail"></div>
                 </div>
+                <div id="rectangleShape"></div>
                 <div id="box1">
                     <div id="pre">
                         <input type="checkbox" name="Checkbox" checked="checked" id="preBox" onchange="updatePreBox(event)">
                     </div>
-                    <input type="text" name="prefix" value="additional prefix" id="prefix" onkeyup="updatePrefix(event)" onfocus="selectIt(event)">
+                    <input type="text" name="prefix" value="prefix" id="prefix" onkeyup="updatePrefix(event)" onfocus="selectIt(event)">
                 </div>
                 <div id="box2">
                     <div id="date">
                         <input type="checkbox" name="Checkbox" checked="checked" id="dateBox" onchange="updateDateBox(event)">
                     </div>
                     <div id="dateText"></div>
+                </div>
+                <div id="box3">
+                    <div id="suf">
+                        <input type="checkbox" name="Checkbox" checked="checked" id="sufBox" onchange="updateSufBox(event)">
+                    </div>
+                    <input type="text" name="prefix" value="suffix" id="suffix" onkeyup="updateSuffix(event)" onfocus="selectIt(event)">
                 </div>
                 <div id="type"></div>
             </div><div id="started">
@@ -55,17 +63,11 @@
         <div id="info"></div>
     </div>
     <div id="back">
-        <div id="text"></div>
-        <div id="iaian7com" onclick="iaian7(event)"></div>
         <img id="backImg" src="Parts/Images/back.png" alt="">
         <div id="spacerText"></div>
-        <div id="box3">
-            <input type="text" name="spacer" value="_" id="spacer" onchange="updateSpacer(event)" onkeyup="updateSpacer(event)">
-        </div>
+        <input type="text" name="spacer" value="_" id="spacer" onchange="updateSpacer(event)" onkeyup="updateSpacer(event)">
         <div id="dateSpacerText"></div>
-        <div id="box4">
-            <input type="text" name="dateSpacer" value="-" id="dateSpacer" onchange="updateDateSpacer(event)" onkeyup="updateDateSpacer(event)">
-        </div>
+        <input type="text" name="dateSpacer" value="-" id="dateSpacer" onchange="updateDateSpacer(event)" onkeyup="updateDateSpacer(event)">
         <div id="dateReverseText"></div>
         <div id="box5">
             <div id="dateReverse">
@@ -73,42 +75,15 @@
                 <div id="dateReverseFeedback">yyyy-mm-dd</div>
             </div>
         </div>
-        <div id="batchText"></div>
-        <div id="box6">
-            <div id="checkbox">
-                <input type="checkbox" name="Checkbox" checked="checked" id="batch1" disabled="disabled">
-                <div id="div">fullsize mp4</div>
-            </div>
-            <div id="checkbox1">
-                <input type="checkbox" name="Checkbox" checked="checked" id="batch2" disabled="disabled">
-                <div id="div1">540p mp4</div>
-            </div>
-            <div id="checkbox2">
-                <input type="checkbox" name="Checkbox" checked="checked" id="batch3" disabled="disabled">
-                <div id="div2">fullsize wmv</div>
-            </div>
-            <div id="checkbox3">
-                <input type="checkbox" name="Checkbox" checked="checked" id="batch4" disabled="disabled">
-                <div id="div3">540p wmv</div>
-            </div>
-            <div id="checkbox4">
-                <input type="checkbox" name="Checkbox" checked="checked" id="batch5" disabled="disabled">
-                <div id="div4">iOS large</div>
-            </div>
-            <div id="checkbox5">
-                <input type="checkbox" name="Checkbox" checked="checked" id="batch6" disabled="disabled">
-                <div id="div5">iOS small</div>
-            </div>
-        </div>
         <div id="locationText"></div>
-        <div id="box7">
-            <input type="text" name="location" value="/opt/local/bin/" id="location" onchange="updateLocation(event)" onkeyup="updateLocation(event)" disabled="disabled">
-        </div>
+        <input type="text" name="location" value="/opt/local/bin/" id="location" onchange="updateLocation(event)" onkeyup="updateLocation(event)">
         <div id="location2Text"></div>
-        <div id="box8">
-            <input type="text" name="location2" value="/opt/local/bin/" id="location2" onchange="updateLocation(event)" onkeyup="updateLocation(event)" disabled="disabled">
-        </div>
+        <input type="text" name="location2" value="/opt/local/bin/" id="location2" onchange="updateLocation2(event)" onkeyup="updateLocation2(event)">
+        <div id="location3Text"></div>
+        <input type="text" name="location3" value="/usr/local/bin/" id="location3" onchange="updateLocation3(event)" onkeyup="updateLocation3(event)">
         <div id="doneSave"></div>
+        <div id="iaian7com" onclick="iaian7(event)"></div>
+        <div id="text"></div>
     </div>
 </body>
 </html>

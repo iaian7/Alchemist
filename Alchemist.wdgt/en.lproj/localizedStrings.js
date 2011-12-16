@@ -7,18 +7,19 @@
 var localizedStrings = {
     "batchText": "batch output formats",
     "copyrightText": "©2011 John Einselen / Vectorform LLC",
-    "dateReverseText": "date reverse",
-    "dateSpacerText": "date spacer",
+    "dateReverseText": "date order",
+    "dateSpacerText": "date",
     "dateSpacerText1": "date spacer",
     "done": "done",
     "done1": "done",
     "download": "download",
     "drop": "drop media files here",
-    "dropDetail": "512x512 or larger",
+    "dropDetail": "high bitrate MP4 prefered",
     "fail": "file processing failed,\nplease try again",
     "feedback": "date",
     "iaian7com": "For more information, please visit iaian7.com/dashboard/alchemist",
     "location2Text": "ffmpeg",
+    "location2Text1": "ffmpeg2theora",
     "locationText": "qt_tools",
     "locationText1": "ffmpeg",
     "nameFileText": "file sheet prefix",
@@ -33,7 +34,7 @@ var localizedStrings = {
     "sharpSize": "size",
     "sharpThresh": "threshold",
     "skip": "skip version",
-    "spacerText": "text spacer",
+    "spacerText": "seperator",
     "spacerText1": "text spacer",
     "started": "file processing has started, initial setup underway",
     "startedDetails": "this may take a minute",
@@ -41,6 +42,7 @@ var localizedStrings = {
     "successDetails": "may take a few minutes or longer, depending on video length",
     "wrong": "wrong file format\nplease try again"
 };
+
 
 
 
