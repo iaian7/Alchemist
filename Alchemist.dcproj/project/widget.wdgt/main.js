@@ -295,21 +295,73 @@ try {
 	var type = "";
 	var typeName = "";
 	switch (prefType) {
-		case 0:
+		case 0:	// ProRes422
 			type = "qt_export_prores422.st";
 			typeName = ".pro422.mov";
 			break;
-		case 1:
+		case 1:	// HDV 1080p
 			type = "qt_export_hdv_1080p.st";
 			typeName = ".hdv1080.mov";
 			break;
-		case 2:
+		case 2:	// HDV 720p
 			type = "qt_export_hdv_720p.st";
 			typeName = ".hdv720.mov";
 			break;
-		case 3:
+		case 3:	// Apple Intermediate Codec
 			type = "qt_export_aic.st";
 			typeName = ".aic.mov";
+			break;
+		case 4:	// HTML5 formats
+			type = [
+				"ffmpeg -pass 2 -vcodec libx264 -b 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 1280x720 -profile main -ab 160k -y ",
+				"ffmpeg -pass 2 -vcodec libx264 -b 1280k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 960x540 -profile main -ab 128k -y ",
+				"ffmpeg2theora --videobitrate 1920k --audiobitrate 160k --speedlevel 0 --max_size 1280x720 -o ",
+				"ffmpeg2theora --videobitrate 1536k --audiobitrate 128k --speedlevel 0 --max_size 960x540 -o ",
+				"ffmpeg2theora -v 6 -a 2 --speedlevel 0 --max_size 1280x720 -o ",
+				"ffmpeg2theora -v 6 -a 2 --speedlevel 0 --max_size 960x540 -o ",
+				"ffmpeg -vcodec libvpx -vb 1024k -minrate 0k -maxrate 1536k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 160k -s 1280x720 -y ",
+				"ffmpeg -vcodec libvpx -vb 768k -minrate 0k -maxrate 1280k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 128k -s 960x540 -y "
+				];
+			typeName = [
+				".720p.mp4",
+				".540p.mp4",
+				".720p.ogg",
+				".540p.ogg",
+				".720p.Q.ogg",
+				".540p.Q.ogg",
+				".720p.webm",
+				".540p.webm"
+				];
+			break;
+		case 5:	// Desktop formats
+			type = [
+				"qt_export_youtube.st",
+				"qt_export_540p.st",
+				"ffmpeg",
+				"ffmpeg"
+				];
+			typeName = [
+				".hd.mp4",
+				".540p.mp4",
+				".hd.wmv",
+				".540p.wmv"
+				];
+			break;
+		case 6:	// Mobile devices
+			type = [
+				"qt_export_iphone.st",
+				"qt_export_ipad.st",
+				"qt_export_atv.st",
+				"ffmpegMultipass",
+				"ffmpegMultipass"
+				];
+			typeName = [
+				".iphone.mp4",
+				".ipad.mp4",
+				".atv.m4v",
+				".wp7.mp4",
+				".android.mp4"
+				];
 			break;
 		default:
 			return showFail(event);
@@ -340,15 +392,9 @@ try {
 				typeName.push(".ios.wmv");
 			}
 		}
-
 //	alert("name segments: "+uriParts[i].join("\n"));
 
-//***************
-//***************
-// What does this do, is it really necessary, and do I need to add prefSufBox?
-//***************
-//***************
-	if (prefPreBox || prefDateBox) showStarted(event);
+	if (prefPreBox || prefDateBox || prefSufBox) showStarted(event);
 //	showSuccess(event);
 
 	for (var i=0; i<uri.length; i++) {
@@ -366,7 +412,7 @@ try {
 			rename = rename+date+prefSpacer;
 		}
 
-		if (rename.length > 0 || rename2.length > 0) {
+		if (rename.length > 1 || rename2.length > 1) {
 			rename = rename.replace(/ /g,"\\ ");
 			rename2 = rename2.replace(/ /g,"\\ ");
 			name = uriParts[i][1]+rename+uriParts[i][2]+uriParts[i][3];
@@ -384,7 +430,7 @@ try {
 //		alert("last file? "+(i+1)+"=="+uri.length);
 		if (i+1==uri.length) showSuccess(event);
 //		widget.system("qt_tools/qt_export --loadsettings="+type+" "+name+" "+newName, endHandler2((i+1==uri.length)?true:false));
-		endEncode(name,newName,type,(i+1==uri.length)?true:false);
+		startEncode(name,newName,type,(i+1==uri.length)?true:false);
 	}
 //	showSuccess(event);
 } catch (ex) {
@@ -395,19 +441,44 @@ try {
 	event.preventDefault();
 }
 
-function endEncode(name,newName,type,end) {
+function startEncode(name,newName,type,end) {
 try {
 	showSuccess(event);
-//	alert("endEncode name: "+name);
-//	alert("endEncode newName: "+newName);
-//	alert("endEncode type: "+type);
-	widget.system("qt_tools/qt_export --loadsettings=qt_tools/"+type+" "+name+" "+newName, (end)?endHandler:endHandlerFake);
-	alert("qt_tools/qt_export --loadsettings=qt_tools/"+type+" "+name+" "+newName);
-	alert("endEncode end: "+end);
+//	alert("startEncode name: "+name);
+//	alert("startEncode newName: "+newName);
+//	alert("startEncode type: "+type);
+
+	if (type.match("qt_export")) {
+		widget.system(prefLocation+"qt_export --loadsettings="+prefLocation+type+" "+name+" "+newName, (end)?endHandler:endHandlerFake);
+		alert(prefLocation+"qt_export --loadsettings="+prefLocation+type+" "+name+" "+newName);
+	} else if (type.match("ffmpeg2theora")) {
+		widget.system(prefLocation3+"ffmpeg2theora "+name+type+newName, (end)?endHandler:endHandlerFake);
+		alert("qt_tools/qt_export --loadsettings=qt_tools/"+type+" "+name+" "+newName);
+	} else {
+		if (type.match("pass 2")) {
+			widget.system(prefLocation2+"ffmpeg -i "+name+type.replace("pass 2","pass 1")+newName, secondEncode(name,newName,type,end));
+			alert(prefLocation2+"ffmpeg -i "+name+type.replace("pass 2","pass 1")+newName);
+		} else {
+			widget.system(prefLocation2+"ffmpeg -i "+name+type+newName, (end)?endHandler:endHandlerFake);
+			alert(prefLocation2+"ffmpeg -i "+name+type+newName);
+		}
+	}
+	alert("startEncode end: "+end);
 //	endHandler();
 	return true;
 } catch (ex) {
-	alert("Problem creating ICNS: " + ex);
+	alert("Problem encoding: " + ex);
+	showFail(event);
+	}
+}
+
+function secondEncode(name,newName,type,end) {
+try {
+	widget.system(prefLocation2+"ffmpeg -i "+name+type+newName, (end)?endHandler:endHandlerFake);
+//	endHandler();
+	return true;
+} catch (ex) {
+	alert("Problem encoding: " + ex);
 	showFail(event);
 	}
 }
@@ -421,7 +492,7 @@ try {
 //	endHandler();
 	return true;
 } catch (ex) {
-	alert("Problem creating ICNS: " + ex);
+	alert("Problem encoding: " + ex);
 	showFail(event);
 	}
 }
@@ -435,7 +506,7 @@ try {
 //	endHandler();
 	return true;
 } catch (ex) {
-	alert("Problem creating ICNS: " + ex);
+	alert("Problem encoding: " + ex);
 	showFail(event);
 	}
 }
