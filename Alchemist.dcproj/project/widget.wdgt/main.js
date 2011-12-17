@@ -313,8 +313,8 @@ try {
 			break;
 		case 4:	// HTML5 formats
 			type = [
-				"ffmpeg -pass 2 -vcodec libx264 -b 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 1280x720 -profile main -ab 160k -y ",
-				"ffmpeg -pass 2 -vcodec libx264 -b 1280k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 960x540 -profile main -ab 128k -y ",
+				"ffmpeg -pass 1 -vcodec libx264 -b 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 1280x720 -profile main -ab 160k -y ",
+				"ffmpeg -pass 1 -vcodec libx264 -b 1280k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 960x540 -profile main -ab 128k -y ",
 				"ffmpeg2theora --videobitrate 1920k --audiobitrate 160k --speedlevel 0 --max_size 1280x720 -o ",
 				"ffmpeg2theora --videobitrate 1536k --audiobitrate 128k --speedlevel 0 --max_size 960x540 -o ",
 				"ffmpeg2theora -v 6 -a 2 --speedlevel 0 --max_size 1280x720 -o ",
@@ -446,39 +446,49 @@ try {
 	showSuccess(event);
 //	alert("startEncode name: "+name);
 //	alert("startEncode newName: "+newName);
-//	alert("startEncode type: "+type);
+	alert("startEncode type:\n"+type.join("\n"));
+
+	alert(prefLocation+"qt_export --loadsettings="+prefLocation+type+" "+name+" "+newName);
+	alert(prefLocation3+"ffmpeg2theora "+name+type+newName);
+	alert(prefLocation2+"ffmpeg -i "+name+type+newName);
+	alert(prefLocation2+"ffmpeg -i "+name+type+newName);
 
 	if (type.match("qt_export")) {
+//		alert("qt_export: "+type);
+//		alert(prefLocation+"qt_export --loadsettings="+prefLocation+type+" "+name+" "+newName);
 		widget.system(prefLocation+"qt_export --loadsettings="+prefLocation+type+" "+name+" "+newName, (end)?endHandler:endHandlerFake);
-		alert(prefLocation+"qt_export --loadsettings="+prefLocation+type+" "+name+" "+newName);
-	} else if (type.match("ffmpeg2theora")) {
+	} else if (type.match(/ffmpeg2theora/i)) {
+//		alert("ffmpeg2theora: "+type);
+//		alert(prefLocation3+"ffmpeg2theora "+name+type+newName);
 		widget.system(prefLocation3+"ffmpeg2theora "+name+type+newName, (end)?endHandler:endHandlerFake);
-		alert("qt_tools/qt_export --loadsettings=qt_tools/"+type+" "+name+" "+newName);
 	} else {
-		if (type.match("pass 2")) {
-			widget.system(prefLocation2+"ffmpeg -i "+name+type.replace("pass 2","pass 1")+newName, secondEncode(name,newName,type,end));
-			alert(prefLocation2+"ffmpeg -i "+name+type.replace("pass 2","pass 1")+newName);
+		if (type.match(/pass 1/i)) {
+//			alert("ffmpeg pass 2: "+type);
+//			alert(prefLocation2+"ffmpeg -i "+name+type+newName);
+			widget.system(prefLocation2+"ffmpeg -i "+name+type+newName, secondEncode(name,newName,type,end));
 		} else {
+//			alert("ffmpeg: "+type);
+//			alert(prefLocation2+"ffmpeg -i "+name+type+newName);
 			widget.system(prefLocation2+"ffmpeg -i "+name+type+newName, (end)?endHandler:endHandlerFake);
-			alert(prefLocation2+"ffmpeg -i "+name+type+newName);
 		}
 	}
 	alert("startEncode end: "+end);
 //	endHandler();
 	return true;
 } catch (ex) {
-	alert("Problem encoding: " + ex);
+	alert("Problem encoding 1: " + ex);
 	showFail(event);
 	}
 }
 
 function secondEncode(name,newName,type,end) {
+type = type.replace("Microsoft","W3Schools");
 try {
 	widget.system(prefLocation2+"ffmpeg -i "+name+type+newName, (end)?endHandler:endHandlerFake);
 //	endHandler();
 	return true;
 } catch (ex) {
-	alert("Problem encoding: " + ex);
+	alert("Problem encoding 2: " + ex);
 	showFail(event);
 	}
 }
@@ -492,7 +502,7 @@ try {
 //	endHandler();
 	return true;
 } catch (ex) {
-	alert("Problem encoding: " + ex);
+	alert("Problem encoding 3: " + ex);
 	showFail(event);
 	}
 }
@@ -506,7 +516,7 @@ try {
 //	endHandler();
 	return true;
 } catch (ex) {
-	alert("Problem encoding: " + ex);
+	alert("Problem encoding 4: " + ex);
 	showFail(event);
 	}
 }
