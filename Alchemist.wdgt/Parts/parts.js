@@ -15,13 +15,14 @@ if(!window.dashcode){dashcode=new Object()}dashcode.setupParts=function(){if(das
 var dashcodePartSpecs = {
     "dateReverseText": { "text": "dateReverseText", "view": "DC.Text" },
     "dateSpacerText": { "text": "dateSpacerText", "view": "DC.Text" },
-    "dateText": { "text": "feedback", "view": "DC.Text" },
+    "dateText": { "text": "dateText", "view": "DC.Text" },
     "doneSave": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showFront", "rightImageWidth": 5, "text": "done", "view": "DC.View" },
     "download": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "versionDownload", "rightImageWidth": 5, "text": "download", "view": "DC.View" },
     "drop": { "text": "drop", "view": "DC.Text" },
     "dropDetail": { "text": "dropDetail", "view": "DC.Text" },
     "failButton": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showMain", "rightImageWidth": 5, "text": "done", "view": "DC.View" },
     "failText": { "text": "fail", "view": "DC.Text" },
+    "feedback": { "text": "feedback", "view": "DC.Text" },
     "iaian7com": { "text": "iaian7com", "view": "DC.Text" },
     "image": { "view": "DC.ImageLayout" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack", "view": "DC.View" },
@@ -45,6 +46,7 @@ var dashcodePartSpecs = {
     "wrongButton": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showMain", "rightImageWidth": 5, "text": "done", "view": "DC.View" },
     "wrongText": { "text": "wrong", "view": "DC.Text" }
 };
+
 
 
 

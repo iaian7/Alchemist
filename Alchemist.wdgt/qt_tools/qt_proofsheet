@@ -1,1 +1,0 @@
-`dirname $0`/qt_tools.app/Contents/MacOS/qt_proofsheet "$@"

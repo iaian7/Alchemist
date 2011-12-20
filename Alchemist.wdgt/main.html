@@ -20,26 +20,30 @@
                     <div id="drop"></div>
                     <div id="dropDetail"></div>
                 </div>
-                <div id="rectangleShape"></div>
-                <div id="box1">
-                    <div id="pre">
-                        <input type="checkbox" name="Checkbox" checked="checked" id="preBox" onchange="updatePreBox(event)">
+                <div id="renameInputs">
+                    <div id="rectangleShape"></div>
+                    <div id="box1">
+                        <div id="pre">
+                            <input type="checkbox" name="Checkbox" checked="checked" id="preBox" onchange="updatePreBox(event)">
+                        </div>
+                        <input type="text" name="prefix" value="prefix" id="prefix" onkeyup="updatePrefix(event)" onfocus="selectIt(event)">
                     </div>
-                    <input type="text" name="prefix" value="prefix" id="prefix" onkeyup="updatePrefix(event)" onfocus="selectIt(event)">
-                </div>
-                <div id="box2">
-                    <div id="date">
-                        <input type="checkbox" name="Checkbox" checked="checked" id="dateBox" onchange="updateDateBox(event)">
+                    <div id="box2">
+                        <div id="date">
+                            <input type="checkbox" name="Checkbox" checked="checked" id="dateBox" onchange="updateDateBox(event)">
+                        </div>
+                        <div id="dateText"></div>
                     </div>
-                    <div id="dateText"></div>
-                </div>
-                <div id="box3">
-                    <div id="suf">
-                        <input type="checkbox" name="Checkbox" checked="checked" id="sufBox" onchange="updateSufBox(event)">
+                    <div id="box3">
+                        <div id="suf">
+                            <input type="checkbox" name="Checkbox" checked="checked" id="sufBox" onchange="updateSufBox(event)">
+                        </div>
+                        <input type="text" name="prefix" value="suffix" id="suffix" onkeyup="updateSuffix(event)" onfocus="selectIt(event)">
                     </div>
-                    <input type="text" name="prefix" value="suffix" id="suffix" onkeyup="updateSuffix(event)" onfocus="selectIt(event)">
                 </div>
+                <div id="box"></div>
                 <div id="type"></div>
+                <div id="feedback"></div>
             </div><div id="started">
                 <div id="startedText"></div>
                 <div id="startedDetails"></div>
@@ -64,15 +68,17 @@
     </div>
     <div id="back">
         <img id="backImg" src="Parts/Images/back.png" alt="">
-        <div id="spacerText"></div>
-        <input type="text" name="spacer" value="_" id="spacer" onchange="updateSpacer(event)" onkeyup="updateSpacer(event)">
-        <div id="dateSpacerText"></div>
-        <input type="text" name="dateSpacer" value="-" id="dateSpacer" onchange="updateDateSpacer(event)" onkeyup="updateDateSpacer(event)">
-        <div id="dateReverseText"></div>
-        <div id="box5">
-            <div id="dateReverse">
-                <input type="checkbox" name="Checkbox" checked="checked" id="dateReverseBox" onchange="updateDateReverseBox(event)">
-                <div id="dateReverseFeedback">yyyy-mm-dd</div>
+        <div id="renameSettings">
+            <div id="spacerText"></div>
+            <input type="text" name="spacer" value="_" id="spacer" onchange="updateSpacer(event)" onkeyup="updateSpacer(event)">
+            <div id="dateSpacerText"></div>
+            <input type="text" name="dateSpacer" value="-" id="dateSpacer" onchange="updateDateSpacer(event)" onkeyup="updateDateSpacer(event)">
+            <div id="dateReverseText"></div>
+            <div id="box5">
+                <div id="dateReverse">
+                    <input type="checkbox" name="Checkbox" checked="checked" id="dateReverseBox" onchange="updateDateReverseBox(event)">
+                    <div id="dateReverseFeedback">yyyy-mm-dd</div>
+                </div>
             </div>
         </div>
         <div id="locationText"></div>

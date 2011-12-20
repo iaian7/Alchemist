@@ -14,12 +14,12 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1184, 290}}</string>
-			<string>{{0, 300}, {1184, 590}}</string>
+			<string>{{0, 0}, {1207, 290}}</string>
+			<string>{{0, 300}, {1207, 590}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>0</integer>
+	<integer>5</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
@@ -52,7 +52,7 @@
 		<key>Save</key>
 		<false/>
 		<key>SavePath</key>
-		<string>/Users/iaian7/Dropbox/Documents/Widgets/VF Sheets</string>
+		<string>/Users/iaian7/Desktop/Git/Alchemist</string>
 		<key>enableSimulation</key>
 		<true/>
 		<key>simulatedHost</key>
@@ -66,8 +66,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {244, 911}}</string>
-			<string>{{245, 0}, {1185, 911}}</string>
+			<string>{{0, 0}, {221, 911}}</string>
+			<string>{{222, 0}, {1208, 911}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
@@ -82,8 +82,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {246, 634}}</string>
-			<string>{{0, 644}, {246, 246}}</string>
+			<string>{{0, 0}, {223, 634}}</string>
+			<string>{{0, 644}, {223, 246}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
@@ -254,20 +254,6 @@
 				<integer>0</integer>
 				<integer>1</integer>
 				<integer>0</integer>
-				<integer>1</integer>
-			</array>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>0</integer>
-				<integer>2</integer>
-			</array>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>0</integer>
 				<integer>0</integer>
 			</array>
 			<array>
@@ -283,22 +269,7 @@
 				<integer>0</integer>
 				<integer>1</integer>
 				<integer>0</integer>
-				<integer>3</integer>
-			</array>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
 				<integer>1</integer>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>0</integer>
-			</array>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>0</integer>
-				<integer>2</integer>
 				<integer>0</integer>
 			</array>
 			<array>
@@ -325,9 +296,27 @@
 				<integer>1</integer>
 				<integer>2</integer>
 			</array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>0</integer>
+				<integer>5</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array/>
+		<array>
+			<array>
+				<integer>5</integer>
+			</array>
+		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>front</string>

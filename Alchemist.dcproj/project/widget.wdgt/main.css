@@ -352,16 +352,16 @@ body {
     border-bottom-right-radius: 5px 5px;
     font-family: 'Helvetica Neue';
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.496094);
+    background-color: rgba(0, 0, 0, 0.5);
     border-color: rgb(0, 0, 0);
     border-width: 1px;
     border-style: solid;
     font-size: 10pt;
+    width: 156px;
     right: 20px;
     margin-left: auto;
+    top: 20px;
     margin-bottom: auto;
-    width: 156px;
-    top: 59px;
 }
 
 #locationText {
@@ -372,11 +372,11 @@ body {
     color: rgb(255, 255, 255);
     font-size: 10pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
-    left: 20px;
     height: 19px;
     width: 85px;
     text-align: left;
-    top: 62px;
+    top: 23px;
+    left: 20px;
     margin-right: auto;
     margin-bottom: auto;
 }
@@ -473,11 +473,11 @@ body {
     border-width: 1px;
     border-color: rgb(0, 0, 0);
     height: 38px;
-    top: 100px;
+    background-color: rgb(13, 13, 13);
+    top: 8px;
     right: 100px;
     margin-left: auto;
     margin-bottom: auto;
-    background-color: rgb(13, 13, 13);
 }
 
 #date {
@@ -511,13 +511,11 @@ body {
     border-color: rgb(0, 0, 0);
     border-width: 1px;
     height: 38px;
-    top: 100px;
-    margin-right: auto;
-    margin-bottom: auto;
-    right: auto;
-    bottom: auto;
     width: 88px;
     background-color: rgb(13, 13, 13);
+    top: 8px;
+    margin-right: auto;
+    margin-bottom: auto;
 }
 
 #prefix {
@@ -543,12 +541,12 @@ body {
     font-size: 10pt;
     text-align: center;
     height: 20px;
-    left: 20px;
-    top: 20px;
     margin-bottom: auto;
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
     margin-right: auto;
     width: 70px;
+    top: 0px;
+    left: 0px;
 }
 
 #dateSpacer {
@@ -564,12 +562,12 @@ body {
     font-size: 10pt;
     text-align: center;
     border-width: 1px;
-    background-color: rgba(0, 0, 0, 0.496094);
-    left: 95px;
+    background-color: rgba(0, 0, 0, 0.5);
     width: 66px;
     margin-right: auto;
-    top: 33px;
     margin-bottom: auto;
+    left: 75px;
+    top: 13px;
 }
 
 #dateSpacerText {
@@ -581,12 +579,12 @@ body {
     font-size: 10pt;
     text-align: center;
     height: 20px;
-    top: 20px;
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
-    left: 95px;
+    left: 85px;
     margin-bottom: auto;
-    right: 135px;
     width: auto;
+    right: 125px;
+    top: 0px;
 }
 
 #box5 {
@@ -595,17 +593,17 @@ body {
     border-width: 1px;
     position: absolute;
     margin-top: 0px;
-    background-color: rgba(0, 0, 0, 0.496094);
+    background-color: rgba(0, 0, 0, 0.5);
     border-top-left-radius: 5px 5px;
     border-top-right-radius: 5px 5px;
     border-bottom-left-radius: 5px 5px;
     border-bottom-right-radius: 5px 5px;
-    top: 35px;
     height: 17px;
-    right: 20px;
     margin-left: auto;
     margin-bottom: auto;
     width: 108px;
+    top: 15px;
+    right: 0px;
 }
 
 #dateReverseText {
@@ -617,12 +615,12 @@ body {
     font-size: 10pt;
     text-align: center;
     height: 20px;
-    top: 20px;
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
     width: 110px;
-    right: 20px;
     margin-left: auto;
     margin-bottom: auto;
+    top: 0px;
+    right: 0px;
 }
 
 #dateReverse {
@@ -737,11 +735,11 @@ body {
     color: rgb(255, 255, 255);
     font-size: 10pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
-    left: 20px;
     height: 19px;
     width: 85px;
     text-align: left;
-    top: 83px;
+    left: 20px;
+    top: 53px;
     margin-right: auto;
     margin-bottom: auto;
 }
@@ -759,11 +757,11 @@ body {
     border-width: 1px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.496094);
+    background-color: rgba(0, 0, 0, 0.5);
     width: 156px;
     right: 20px;
     margin-left: auto;
-    top: 80px;
+    top: 50px;
     margin-bottom: auto;
 }
 
@@ -780,12 +778,12 @@ body {
     font-size: 10pt;
     text-align: center;
     border-width: 1px;
-    background-color: rgba(0, 0, 0, 0.496094);
-    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
     width: 66px;
     margin-right: auto;
-    top: 33px;
     margin-bottom: auto;
+    left: 0px;
+    top: 13px;
 }
 
 #location3Text {
@@ -796,11 +794,11 @@ body {
     color: rgb(255, 255, 255);
     font-size: 10pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
-    left: 20px;
     height: 19px;
     width: 85px;
     text-align: left;
-    top: 104px;
+    left: 20px;
+    top: 83px;
     margin-right: auto;
     margin-bottom: auto;
 }
@@ -817,12 +815,12 @@ body {
     text-align: left;
     border-color: rgb(0, 0, 0);
     font-size: 10pt;
-    background-color: rgba(0, 0, 0, 0.496094);
+    background-color: rgba(0, 0, 0, 0.5);
     border-width: 1px;
     width: 156px;
     right: 20px;
     margin-left: auto;
-    top: 101px;
+    top: 80px;
     margin-bottom: auto;
 }
 
@@ -874,11 +872,11 @@ body {
     border-width: 1px;
     height: 38px;
     width: 88px;
-    top: 100px;
     left: 170px;
+    background-color: rgb(13, 13, 13);
+    top: 8px;
     margin-right: auto;
     margin-bottom: auto;
-    background-color: rgb(13, 13, 13);
 }
 
 #suf {
@@ -922,5 +920,70 @@ body {
     left: 0px;
     width: 260px;
     height: 26px;
-    top: 114px;
+    top: 22px;
+}
+
+#box {
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    left: 0px;
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    height: 48px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(13, 13, 13);
+    top: 90px;
+    margin-bottom: auto;
+    right: 0px;
+    width: auto;
+}
+
+#feedback {
+    font-family: 'Lucida Grande', Arial, sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+    font-size: 10px;
+    text-align: center;
+    right: 0px;
+    width: auto;
+    height: 20px;
+    top: 120px;
+    margin-bottom: auto;
+    color: rgb(128, 128, 128);
+}
+
+.selected #feedback {
+    color: white;
+}
+
+#renameSettings {
+    border-color: black;
+    border-style: solid;
+    position: absolute;
+    margin-top: 0px;
+    top: 20px;
+    left: 20px;
+    width: 258px;
+    height: 33px;
+    border-width: 0px;
+    visibility: hidden;
+}
+
+#renameInputs {
+    border-color: black;
+    border-style: solid;
+    position: absolute;
+    width: auto;
+    margin-top: auto;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    border-width: 0px;
+    height: 50px;
+    visibility: hidden;
 }

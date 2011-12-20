@@ -209,6 +209,7 @@ function erasePrefs() {
 function updateType(event) {
 	prefType = document.getElementById("type").object.getSelectedIndex();
 	updatePrefs();
+	updateFeedback();
 }
 
 function updateLocation(event) {
@@ -261,6 +262,33 @@ function updateDateReverseFeedback(event) {
 	document.getElementById("dateReverseFeedback").innerHTML = (prefDateReverseBox)?"yyyy"+prefDateSpacer+"mm"+prefDateSpacer+"dd":"dd"+prefDateSpacer+"mm"+prefDateSpacer+"yyyy";
 }
 
+function updateFeedback(event) {
+	switch (prefType) {
+		case 0:	// ProRes422
+			document.getElementById("feedback").innerHTML = "Quicktime ProRes422";
+			break;
+		case 1:	// HDV 1080p
+			document.getElementById("feedback").innerHTML = "Quicktime HDV 1080p";
+			break;
+		case 2:	// HDV 720p
+			document.getElementById("feedback").innerHTML = "Quicktime HDV 720p";
+			break;
+		case 3:	// Apple Intermediate Codec
+			document.getElementById("feedback").innerHTML = "Quicktime AIC";
+			break;
+		case 4:	// HTML5 formats
+			document.getElementById("feedback").innerHTML = "MP4 720/540p, OGG 720/540p, WebM 720/540p";
+			break;
+		case 5:	// Desktop formats
+			document.getElementById("feedback").innerHTML = "MP4 720p, WMV 720p";
+			break;
+		case 6:	// Mobile devices
+			document.getElementById("feedback").innerHTML = "M4V 720p, MP4 540p";
+			break;
+		default:
+			document.getElementById("feedback").innerHTML = "";
+		}
+}
 
 
 // Be sure to assign these handlers for the ondragenter and ondragover events on your drop target. These handlers prevent Web Kit from processing drag events so you can handle the drop when it occurs.
@@ -292,107 +320,56 @@ try {
 	}
 //	alert("uriParts:\n"+uriParts.join("\n"));
 
-	var type = "";
-	var typeName = "";
+	var type = [];
 	switch (prefType) {
 		case 0:	// ProRes422
-			type = "qt_export_prores422.st";
-			typeName = ".pro422.mov";
+			type = [["qt_tools","qt_export_prores422.st",".prores422.mov"]];
 			break;
 		case 1:	// HDV 1080p
-			type = "qt_export_hdv_1080p.st";
-			typeName = ".hdv1080.mov";
+			type = [["qt_tools","qt_export_hdv_1080p.st",".hdv1080.mov"]];
 			break;
 		case 2:	// HDV 720p
-			type = "qt_export_hdv_720p.st";
-			typeName = ".hdv720.mov";
+			type = [["qt_tools","qt_export_hdv_720p.st",".hdv720.mov"]];
 			break;
 		case 3:	// Apple Intermediate Codec
-			type = "qt_export_aic.st";
-			typeName = ".aic.mov";
+			type = [["qt_tools","qt_export_aic.st",".aic.mov"]];
 			break;
 		case 4:	// HTML5 formats
 			type = [
-				"ffmpeg -pass 1 -vcodec libx264 -b 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 1280x720 -profile main -ab 160k -y ",
-				"ffmpeg -pass 1 -vcodec libx264 -b 1280k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 960x540 -profile main -ab 128k -y ",
-				"ffmpeg2theora --videobitrate 1920k --audiobitrate 160k --speedlevel 0 --max_size 1280x720 -o ",
-				"ffmpeg2theora --videobitrate 1536k --audiobitrate 128k --speedlevel 0 --max_size 960x540 -o ",
-				"ffmpeg2theora -v 6 -a 2 --speedlevel 0 --max_size 1280x720 -o ",
-				"ffmpeg2theora -v 6 -a 2 --speedlevel 0 --max_size 960x540 -o ",
-				"ffmpeg -vcodec libvpx -vb 1024k -minrate 0k -maxrate 1536k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 160k -s 1280x720 -y ",
-				"ffmpeg -vcodec libvpx -vb 768k -minrate 0k -maxrate 1280k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 128k -s 960x540 -y "
-				];
-			typeName = [
-				".720p.mp4",
-				".540p.mp4",
-				".720p.ogg",
-				".540p.ogg",
-				".720p.Q.ogg",
-				".540p.Q.ogg",
-				".720p.webm",
-				".540p.webm"
-				];
+				["ffmpegMultipass","-pass 1 -vcodec libx264 -b 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 1280x720 -profile main -ab 160k -y",".720p.mp4"],
+				["ffmpegMultipass","-pass 1 -vcodec libx264 -b 1280k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 960x540 -profile main -ab 128k -y",".540p.mp4"],
+				["ffmpeg2theora","--videobitrate 1920k --audiobitrate 160k --speedlevel 0 --max_size 1280x720 -o",".720p.ogg"],
+				["ffmpeg2theora","--videobitrate 1536k --audiobitrate 128k --speedlevel 0 --max_size 960x540 -o",".540p.ogg"],
+				["ffmpeg2theora","-v 6 -a 2 --speedlevel 0 --max_size 1280x720 -o",".720p.Q.ogg"],
+				["ffmpeg2theora","-v 6 -a 2 --speedlevel 0 --max_size 960x540 -o",".540p.Q.ogg"],
+				["ffmpeg","-vcodec libvpx -vb 1024k -minrate 0k -maxrate 1536k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 160k -s 1280x720 -y",".720p.webm"],
+				["ffmpeg","-vcodec libvpx -vb 768k -minrate 0k -maxrate 1280k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 128k -s 960x540 -y",".540p.webm"]
+			];
 			break;
 		case 5:	// Desktop formats
 			type = [
-				"qt_export_youtube.st",
-				"qt_export_540p.st",
-				"ffmpeg",
-				"ffmpeg"
-				];
-			typeName = [
-				".hd.mp4",
-				".540p.mp4",
-				".hd.wmv",
-				".540p.wmv"
-				];
+				["qt_tools","qt_export_youtube.st",".hd.mp4"],
+				["qt_tools","qt_export_540p.st",".540p.mp4"],
+				["ffmpeg","ffmpeg",".hd.wmv"],
+				["ffmpeg","ffmpeg",".540p.wmv"]
+			];
 			break;
 		case 6:	// Mobile devices
 			type = [
-				"qt_export_iphone.st",
-				"qt_export_ipad.st",
-				"qt_export_atv.st",
-				"ffmpegMultipass",
-				"ffmpegMultipass"
-				];
-			typeName = [
-				".iphone.mp4",
-				".ipad.mp4",
-				".atv.m4v",
-				".wp7.mp4",
-				".android.mp4"
-				];
+				["qt_tools","qt_export_iphone.st",".iphone.mp4"],
+				["qt_tools","qt_export_ipad.st",".ipad.mp4"],
+				["qt_tools","qt_export_atv.st",".atv.m4v"],
+				["ffmpegMultipass","ffmpegMultipass",".wp7.mp4"],
+				["ffmpegMultipass","ffmpegMultipass",".android.mp4"]
+			];
 			break;
 		default:
 			return showFail(event);
-			type = [];
-			typeName = [];
-			if (prefBatch1) {
-				type.push("qt_export_youtube.st");
-				typeName.push(".hd.mp4");
-			}
-			if (prefBatch2) {
-				type.push("qt_export_540p.st");
-				typeName.push(".540p.mp4");
-			}
-			if (prefBatch3) {
-				type.push("ffmpeg");
-				typeName.push(".hd.wmv");
-			}
-			if (prefBatch4) {
-				type.push("ffmpeg");
-				typeName.push(".540p.wmv");
-			}
-			if (prefBatch5) {
-				type.push("qt_export_ios.st");
-				typeName.push(".appletv.m4v");
-			}
-			if (prefBatch6) {
-				type.push("ffmpeg");
-				typeName.push(".ios.wmv");
-			}
 		}
-//	alert("name segments: "+uriParts[i].join("\n"));
+
+/*********************************************************
+/*	OLD RENAMING CODE - UI ELEMENTS ARE CURRENTLY HIDDEN *
+/*********************************************************
 
 	if (prefPreBox || prefDateBox || prefSufBox) showStarted(event);
 //	showSuccess(event);
@@ -432,6 +409,18 @@ try {
 //		widget.system("qt_tools/qt_export --loadsettings="+type+" "+name+" "+newName, endHandler2((i+1==uri.length)?true:false));
 		startEncode(name,newName,type,(i+1==uri.length)?true:false);
 	}
+//*/
+
+	for (var i=0; i<uri.length; i++) {
+//		alert("name segments: "+uriParts[i].join("\n"));
+		var name = [uriParts[i][1]+uriParts[i][2],uriParts[i][3]];
+		alert("name[0] = "+name[0]);
+		alert("name[1] = "+name[1]);
+
+		if (i+1==uri.length) showSuccess(event);
+		startEncode(name,type,(i+1==uri.length)?true:false);
+	}
+
 //	showSuccess(event);
 } catch (ex) {
 	alert("Problem fetching URI: " + ex);
@@ -441,38 +430,31 @@ try {
 	event.preventDefault();
 }
 
-function startEncode(name,newName,type,end) {
+function startEncode(name,type,end) {
 try {
 	showSuccess(event);
-//	alert("startEncode name: "+name);
-//	alert("startEncode newName: "+newName);
-	alert("startEncode type:\n"+type.join("\n"));
+//	alert("First File:\nstartEncode type: "+type[0][0]+"\nstartEncode string: "+type[0][1]+"\nstartEncode extension: "+type[0][2]);
 
-	alert(prefLocation+"qt_export --loadsettings="+prefLocation+type+" "+name+" "+newName);
-	alert(prefLocation3+"ffmpeg2theora "+name+type+newName);
-	alert(prefLocation2+"ffmpeg -i "+name+type+newName);
-	alert(prefLocation2+"ffmpeg -i "+name+type+newName);
-
-	if (type.match("qt_export")) {
-//		alert("qt_export: "+type);
-//		alert(prefLocation+"qt_export --loadsettings="+prefLocation+type+" "+name+" "+newName);
-		widget.system(prefLocation+"qt_export --loadsettings="+prefLocation+type+" "+name+" "+newName, (end)?endHandler:endHandlerFake);
-	} else if (type.match(/ffmpeg2theora/i)) {
-//		alert("ffmpeg2theora: "+type);
-//		alert(prefLocation3+"ffmpeg2theora "+name+type+newName);
-		widget.system(prefLocation3+"ffmpeg2theora "+name+type+newName, (end)?endHandler:endHandlerFake);
-	} else {
-		if (type.match(/pass 1/i)) {
-//			alert("ffmpeg pass 2: "+type);
-//			alert(prefLocation2+"ffmpeg -i "+name+type+newName);
-			widget.system(prefLocation2+"ffmpeg -i "+name+type+newName, secondEncode(name,newName,type,end));
+	for (var i=0; i<type.length; i++) {
+		if (type[i][0]=="qt_tools") {
+//			alert(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+" "+name[0]+type[i][2]);
+			widget.system(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+" "+name[0]+type[i][2], (end)?endHandler:endHandlerFake);
+		} else if (type[i][0]=="ffmpeg2theora") {
+//			alert(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
+			widget.system(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2], (end)?endHandler:endHandlerFake);
+// Add PCastAction support at a later date? Keeping in mind that Lion kills it and replaces with something else
 		} else {
-//			alert("ffmpeg: "+type);
-//			alert(prefLocation2+"ffmpeg -i "+name+type+newName);
-			widget.system(prefLocation2+"ffmpeg -i "+name+type+newName, (end)?endHandler:endHandlerFake);
+			if (type[i][0]=="ffmpegMultipass") {
+//				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
+				widget.system(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2], secondEncode(name,type[i],end));
+			} else {
+//				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
+				widget.system(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2], (end)?endHandler:endHandlerFake);
+			}
 		}
 	}
-	alert("startEncode end: "+end);
+
+//	alert("startEncode end: "+end);
 //	endHandler();
 	return true;
 } catch (ex) {
@@ -481,10 +463,10 @@ try {
 	}
 }
 
-function secondEncode(name,newName,type,end) {
-type = type.replace("Microsoft","W3Schools");
+function secondEncode(name,type,end) {
+type[1] = type[1].replace("-pass 1","-pass 2");
 try {
-	widget.system(prefLocation2+"ffmpeg -i "+name+type+newName, (end)?endHandler:endHandlerFake);
+	widget.system(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[1]+" "+name[0]+type[2], (end)?endHandler:endHandlerFake);
 //	endHandler();
 	return true;
 } catch (ex) {
@@ -493,43 +475,15 @@ try {
 	}
 }
 
-function pcEncode(name,newName,type,end) {
-try {
-	showSuccess(event);
-	widget.system("/usr/bin/pcastaction encode --prb --input="+name+" --output="+newName+" --encoder="+type, (end)?endHandler:endHandlerFake);
-	alert("/usr/bin/pcastaction encode --prb --input="+name+" --output="+newName+" --encoder="+type);
-	alert("pcEncode end: "+end);
-//	endHandler();
-	return true;
-} catch (ex) {
-	alert("Problem encoding 3: " + ex);
-	showFail(event);
-	}
-}
-
-function ffEncode(name,newName,type,end) {
-try {
-	showSuccess(event);
-	widget.system("/usr/bin/pcastaction encode --prb --input="+name+" --output="+newName+" --encoder="+type, (end)?endHandler:endHandlerFake);
-	alert("/usr/bin/pcastaction encode --prb --input="+name+" --output="+newName+" --encoder="+type);
-	alert("pcEncode end: "+end);
-//	endHandler();
-	return true;
-} catch (ex) {
-	alert("Problem encoding 4: " + ex);
-	showFail(event);
-	}
-}
-
 function endHandler(output) {
 //	alert("output = "+output.outputString);
-	alert("endHandler");
+	alert("endHandler: "+output);
 	showMain();
 }
 
 function endHandlerFake(output) {
 //	alert("output = "+output.outputString);
-	alert("endHandlerFake");
+	alert("endHandlerFake: "+output);
 }
 
 function endHandler2(end) {
