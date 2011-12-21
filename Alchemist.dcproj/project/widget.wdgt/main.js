@@ -283,7 +283,7 @@ function updateFeedback(event) {
 			document.getElementById("feedback").innerHTML = "MP4 720p, WMV 720p";
 			break;
 		case 6:	// Mobile devices
-			document.getElementById("feedback").innerHTML = "M4V 720p, MP4 540p";
+			document.getElementById("feedback").innerHTML = "MP4 480/360p";
 			break;
 		default:
 			document.getElementById("feedback").innerHTML = "";
@@ -336,31 +336,30 @@ try {
 			break;
 		case 4:	// HTML5 formats
 			type = [
-				["ffmpegMultipass","-pass 1 -vcodec libx264 -b 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 1280x720 -profile main -ab 160k -y",".720p.mp4"],
-				["ffmpegMultipass","-pass 1 -vcodec libx264 -b 1280k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -flags qprd -s 960x540 -profile main -ab 128k -y",".540p.mp4"],
+				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 2048k -minrate 128k -maxrate 3072k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.mp4"],
+				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 1280k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.mp4"],
 				["ffmpeg2theora","--videobitrate 1920k --audiobitrate 160k --speedlevel 0 --max_size 1280x720 -o",".720p.ogg"],
 				["ffmpeg2theora","--videobitrate 1536k --audiobitrate 128k --speedlevel 0 --max_size 960x540 -o",".540p.ogg"],
-				["ffmpeg2theora","-v 6 -a 2 --speedlevel 0 --max_size 1280x720 -o",".720p.Q.ogg"],
-				["ffmpeg2theora","-v 6 -a 2 --speedlevel 0 --max_size 960x540 -o",".540p.Q.ogg"],
-				["ffmpeg","-vcodec libvpx -vb 1024k -minrate 0k -maxrate 1536k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 160k -s 1280x720 -y",".720p.webm"],
-				["ffmpeg","-vcodec libvpx -vb 768k -minrate 0k -maxrate 1280k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 128k -s 960x540 -y",".540p.webm"]
+//				["ffmpeg2theora","-v 8 -a 2 --speedlevel 0 --max_size 1280x720 -o",".720p.Q.ogg"],
+//				["ffmpeg2theora","-v 8 -a 2 --speedlevel 0 --max_size 960x540 -o",".540p.Q.ogg"],
+				["ffmpeg","-vcodec libvpx -vb 1280k -minrate 0k -maxrate 2048k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 160k -s 1280x720 -y",".720p.webm"],
+				["ffmpeg","-vcodec libvpx -vb 1024k -minrate 0k -maxrate 1536k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 128k -s 960x540 -y",".540p.webm"]
 			];
 			break;
 		case 5:	// Desktop formats
 			type = [
-				["qt_tools","qt_export_youtube.st",".hd.mp4"],
-				["qt_tools","qt_export_540p.st",".540p.mp4"],
-				["ffmpeg","ffmpeg",".hd.wmv"],
-				["ffmpeg","ffmpeg",".540p.wmv"]
+				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.mp4"],
+				["ffmpeg","-vcodec libx264 -qmax 33 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.Q.mp4"],
+				["ffmpeg","-b 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.wmv"],
+				["ffmpeg","-qmax 15 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.Q.wmv"],
 			];
 			break;
 		case 6:	// Mobile devices
 			type = [
-				["qt_tools","qt_export_iphone.st",".iphone.mp4"],
-				["qt_tools","qt_export_ipad.st",".ipad.mp4"],
-				["qt_tools","qt_export_atv.st",".atv.m4v"],
-				["ffmpegMultipass","ffmpegMultipass",".wp7.mp4"],
-				["ffmpegMultipass","ffmpegMultipass",".android.mp4"]
+//				["ffmpeg"," -qmax 32 -s 854x480 -strict experimental -ab 128k -y",".480p.Q.mp4"],
+//				["ffmpeg"," -qmax 32 -s 640x360 -strict experimental -ab 128k -y",".360p.Q.mp4"],
+				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 1024k -minrate 128k -maxrate 1536k -bufsize 224k -s 854x480 -strict experimental -ab 128k -y",".480p.mp4"],
+				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 768k -minrate 128k -maxrate 1280k -bufsize 224k -s 640x360 -strict experimental -ab 128k -y",".360p.mp4"]
 			];
 			break;
 		default:
@@ -437,18 +436,18 @@ try {
 
 	for (var i=0; i<type.length; i++) {
 		if (type[i][0]=="qt_tools") {
-//			alert(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+" "+name[0]+type[i][2]);
+			alert(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+" "+name[0]+type[i][2]);
 			widget.system(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+" "+name[0]+type[i][2], (end)?endHandler:endHandlerFake);
 		} else if (type[i][0]=="ffmpeg2theora") {
-//			alert(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
+			alert(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
 			widget.system(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2], (end)?endHandler:endHandlerFake);
 // Add PCastAction support at a later date? Keeping in mind that Lion kills it and replaces with something else
 		} else {
 			if (type[i][0]=="ffmpegMultipass") {
-//				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
+				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
 				widget.system(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2], secondEncode(name,type[i],end));
 			} else {
-//				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
+				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
 				widget.system(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2], (end)?endHandler:endHandlerFake);
 			}
 		}
