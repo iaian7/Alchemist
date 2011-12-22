@@ -340,8 +340,6 @@ try {
 				["ffmpegMultipass","-vcodec libx264 -vb 1024k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.mp4"],
 // so-so quality	["ffmpegMultipass","-vcodec libx264 -vb 2048k -bt 1024k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.bt.mp4"],
 // so-so quality	["ffmpegMultipass","-vcodec libx264 -vb 1280k -bt 1024k -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.bt.mp4"],
-// very low quality		["ffmpegMultipass","-vcodec libx264 -vb 2048k -bt 1024k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 60 -sc_threshold 20 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.bt2.mp4"],
-// very low quality		["ffmpegMultipass","-vcodec libx264 -vb 1280k -bt 1024k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 60 -sc_threshold 20 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.bt2.mp4"],
 				["ffmpeg","-vcodec libx264 -q 18 -trellis 1 -me_range 32 -i_qfactor 0.71 -g 60 -sc_threshold 20 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.Q.mp4"],
 				["ffmpeg","-vcodec libx264 -q 18 -trellis 1 -me_range 32 -i_qfactor 0.71 -g 60 -sc_threshold 20 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.Q.mp4"],
 				["ffmpeg2theora","-V 2560k -A 160k --two-pass --speedlevel 0 --max_size 1280x720 -o",".720p.ogg"],
@@ -356,13 +354,12 @@ try {
 			break;
 		case 5:	// Desktop formats
 			type = [
-// lower quality	["ffmpegMultipass","-vb 1536k -bt 768k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.simple.mp4"],
-// complex but doesn't help		["ffmpegMultipass","-vb 1536k -bt 768k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 48 -sc_threshold 32 -qmin 4 -qmax 32 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.mp4"],
+// low quality		["ffmpegMultipass","-vb 1536k -bt 768k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.simple.mp4"],
+// complex, no improvement		["ffmpegMultipass","-vb 1536k -bt 768k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 48 -sc_threshold 32 -qmin 4 -qmax 32 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.mp4"],
 				["ffmpegMultipass","-vcodec libx264 -vb 2048k -minrate 128k -maxrate 4096k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.mp4"],
-//				["ffmpegMultipass","-vcodec libx264 -vb 1536k -minrate 128k -maxrate 3072k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.html5.mp4"],
 // worse than HTML5	["ffmpegMultipass","-vb 1280k -bt 1024k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 60 -sc_threshold 48 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.small.mp4"],
 // bad motion		["ffmpegMultipass","-vb 2560k -bt 1024k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.simple.wmv"],
-// complex, no help		["ffmpegMultipass","-vb 2560k -bt 1280k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 48 -sc_threshold 32 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.wmv"],
+// complex, no improvement		["ffmpegMultipass","-vb 2560k -bt 1280k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 48 -sc_threshold 32 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.wmv"],
 				["ffmpegMultipass","-vb 3072k -bt 2048k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.wmv"]
 			];
 			break;
@@ -456,22 +453,9 @@ try {
 // Add PCastAction support at a later date? Keeping in mind that Lion kills it and replaces with something else
 		} else {
 			if (type[i][0]=="ffmpegMultipass") {
-//				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+name[2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2]);
-//				widget.system(prefLocation2+"ffmpeg -passlogfile "+name[0]+name[1]+type[i][2]+" -pass 1 -i "+name[0]+name[1]+name[2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2], secondEncode(name,type[i],end)).outputString;
-
 				var tempCommand = prefLocation2+"ffmpeg -i "+name[0]+name[1]+name[2]+" -pass 1 -passlogfile ~/.Trash/"+name[1]+type[i][2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2];
 				var tempCommand = tempCommand+"\n";
 				var tempCommand = tempCommand+prefLocation2+"ffmpeg -i "+name[0]+name[1]+name[2]+" -pass 2 -passlogfile ~/.Trash/"+name[1]+type[i][2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2];
-
-//				var tempCommand = tempCommand+"\n";
-//				var tempCommand = tempCommand+"mv "+name[0]+name[1]+type[i][2]+"*.log ~/.Trash/";
-//				var tempCommand = tempCommand+"\n";
-//				var tempCommand = tempCommand+"mv "+name[0]+name[1]+type[i][2]+"*.mbtree ~/.Trash/";
-
-//				var tempCommand = prefLocation2+"ffmpeg -i "+name[0]+name[1]+name[2]+" -pass 1 -passlogfile ~/.Trash/AlchemistTemp"+type[i][2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2];
-//				var tempCommand = tempCommand+"\n";
-//				var tempCommand = tempCommand+prefLocation2+"ffmpeg -i "+name[0]+name[1]+name[2]+" -pass 2 -passlogfile ~/.Trash/AlchemistTemp"+type[i][2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2];
-
 				alert(tempCommand);
 				widget.system(tempCommand, (end)?endHandler:endHandlerFake);
 			} else {
