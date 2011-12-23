@@ -336,30 +336,39 @@ try {
 			break;
 		case 4:	// HTML5 formats
 			type = [
-				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 2048k -minrate 128k -maxrate 3072k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.mp4"],
-				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 1280k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.mp4"],
-				["ffmpeg2theora","--videobitrate 1920k --audiobitrate 160k --speedlevel 0 --max_size 1280x720 -o",".720p.ogg"],
-				["ffmpeg2theora","--videobitrate 1536k --audiobitrate 128k --speedlevel 0 --max_size 960x540 -o",".540p.ogg"],
-//				["ffmpeg2theora","-v 8 -a 2 --speedlevel 0 --max_size 1280x720 -o",".720p.Q.ogg"],
-//				["ffmpeg2theora","-v 8 -a 2 --speedlevel 0 --max_size 960x540 -o",".540p.Q.ogg"],
+				["ffmpegMultipass","-vcodec libx264 -vb 1536k -minrate 128k -maxrate 3072k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.mp4"],
+				["ffmpegMultipass","-vcodec libx264 -vb 1024k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.mp4"],
+// so-so quality	["ffmpegMultipass","-vcodec libx264 -vb 2048k -bt 1024k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.bt.mp4"],
+// so-so quality	["ffmpegMultipass","-vcodec libx264 -vb 1280k -bt 1024k -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.bt.mp4"],
+				["ffmpeg","-vcodec libx264 -q 18 -trellis 1 -me_range 32 -i_qfactor 0.71 -g 60 -sc_threshold 20 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.Q.mp4"],
+				["ffmpeg","-vcodec libx264 -q 18 -trellis 1 -me_range 32 -i_qfactor 0.71 -g 60 -sc_threshold 20 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.Q.mp4"],
+				["ffmpeg2theora","-V 2560k -A 160k --two-pass --speedlevel 0 --max_size 1280x720 -o",".720p.ogg"],
+				["ffmpeg2theora","-V 1920k -A 128k --two-pass --speedlevel 0 --max_size 960x540 -o",".540p.ogg"],
+// low quality		["ffmpeg2theora","-v 4 -a 2 --speedlevel 0 --max_size 1280x720 -o",".720p.Q.ogg"],
+// low quality		["ffmpeg2theora","-v 4 -a 2 --speedlevel 0 --max_size 960x540 -o",".540p.Q.ogg"],
+// bad motion		["ffmpeg2theora","-V 2560k -A 160k --speedlevel 0 --max_size 1280x720 -o",".720p.singlepass.ogg"],
+// bad motion		["ffmpeg2theora","-V 1920k -A 128k --speedlevel 0 --max_size 960x540 -o",".540p.singlepass.ogg"],
 				["ffmpeg","-vcodec libvpx -vb 1280k -minrate 0k -maxrate 2048k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 160k -s 1280x720 -y",".720p.webm"],
 				["ffmpeg","-vcodec libvpx -vb 1024k -minrate 0k -maxrate 1536k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 128k -s 960x540 -y",".540p.webm"]
 			];
 			break;
 		case 5:	// Desktop formats
 			type = [
-				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.mp4"],
-				["ffmpeg","-vcodec libx264 -qmax 33 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.Q.mp4"],
-				["ffmpeg","-b 1536k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.wmv"],
-				["ffmpeg","-qmax 15 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.Q.wmv"],
+// low quality		["ffmpegMultipass","-vb 1536k -bt 768k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.simple.mp4"],
+// complex, no improvement		["ffmpegMultipass","-vb 1536k -bt 768k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 48 -sc_threshold 32 -qmin 4 -qmax 32 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.mp4"],
+				["ffmpegMultipass","-vcodec libx264 -vb 2048k -minrate 128k -maxrate 4096k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.mp4"],
+// worse than HTML5	["ffmpegMultipass","-vb 1280k -bt 1024k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 60 -sc_threshold 48 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.small.mp4"],
+// bad motion		["ffmpegMultipass","-vb 2560k -bt 1024k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.simple.wmv"],
+// complex, no improvement		["ffmpegMultipass","-vb 2560k -bt 1280k -trellis 1 -me_range 32 -i_qfactor 0.71 -g 48 -sc_threshold 32 -qmin 4 -qmax 48 -qdiff 8 -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.wmv"],
+				["ffmpegMultipass","-vb 3072k -bt 2048k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.wmv"]
 			];
 			break;
 		case 6:	// Mobile devices
 			type = [
-//				["ffmpeg"," -qmax 32 -s 854x480 -strict experimental -ab 128k -y",".480p.Q.mp4"],
-//				["ffmpeg"," -qmax 32 -s 640x360 -strict experimental -ab 128k -y",".360p.Q.mp4"],
-				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 1024k -minrate 128k -maxrate 1536k -bufsize 224k -s 854x480 -strict experimental -ab 128k -y",".480p.mp4"],
-				["ffmpegMultipass","-pass 1 -vcodec libx264 -vb 768k -minrate 128k -maxrate 1280k -bufsize 224k -s 640x360 -strict experimental -ab 128k -y",".360p.mp4"]
+//				["ffmpeg","-qmin 3 -qmax 51 -qdiff 4 -s 854x480 -strict experimental -ab 128k -y",".480p.Q.mp4"],
+//				["ffmpeg","-qmin 3 -qmax 51 -qdiff 4 -s 640x360 -strict experimental -ab 128k -y",".360p.Q.mp4"],
+				["ffmpegMultipass","-vcodec libx264 -vb 1024k -minrate 128k -maxrate 1536k -bufsize 224k -s 854x480 -strict experimental -ab 128k -y",".480p.mp4"],
+				["ffmpegMultipass","-vcodec libx264 -vb 768k -minrate 128k -maxrate 1280k -bufsize 224k -s 640x360 -strict experimental -ab 128k -y",".360p.mp4"]
 			];
 			break;
 		default:
@@ -412,9 +421,9 @@ try {
 
 	for (var i=0; i<uri.length; i++) {
 //		alert("name segments: "+uriParts[i].join("\n"));
-		var name = [uriParts[i][1]+uriParts[i][2],uriParts[i][3]];
-		alert("name[0] = "+name[0]);
-		alert("name[1] = "+name[1]);
+		var name = [uriParts[i][1],uriParts[i][2],uriParts[i][3]];
+		alert("name[0]+name[1] = "+name[0]+name[1]);
+		alert("name[2] = "+name[2]);
 
 		if (i+1==uri.length) showSuccess(event);
 		startEncode(name,type,(i+1==uri.length)?true:false);
@@ -436,19 +445,22 @@ try {
 
 	for (var i=0; i<type.length; i++) {
 		if (type[i][0]=="qt_tools") {
-			alert(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+" "+name[0]+type[i][2]);
-			widget.system(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+" "+name[0]+type[i][2], (end)?endHandler:endHandlerFake);
+			alert(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+name[2]+" "+name[0]+name[1]+type[i][2]);
+			widget.system(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+name[2]+" "+name[0]+name[1]+type[i][2], (end)?endHandler:endHandlerFake);
 		} else if (type[i][0]=="ffmpeg2theora") {
-			alert(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
-			widget.system(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2], (end)?endHandler:endHandlerFake);
+			alert(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+name[2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2]);
+			widget.system(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+name[2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2], (end)?endHandler:endHandlerFake);
 // Add PCastAction support at a later date? Keeping in mind that Lion kills it and replaces with something else
 		} else {
 			if (type[i][0]=="ffmpegMultipass") {
-				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
-				widget.system(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2], secondEncode(name,type[i],end));
+				var tempCommand = prefLocation2+"ffmpeg -i "+name[0]+name[1]+name[2]+" -pass 1 -passlogfile ~/.Trash/"+name[1]+type[i][2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2];
+				var tempCommand = tempCommand+"\n";
+				var tempCommand = tempCommand+prefLocation2+"ffmpeg -i "+name[0]+name[1]+name[2]+" -pass 2 -passlogfile ~/.Trash/"+name[1]+type[i][2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2];
+				alert(tempCommand);
+				widget.system(tempCommand, (end)?endHandler:endHandlerFake);
 			} else {
-				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2]);
-				widget.system(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[i][1]+" "+name[0]+type[i][2], (end)?endHandler:endHandlerFake);
+				alert(prefLocation2+"ffmpeg -i "+name[0]+name[1]+name[2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2]);
+				widget.system(prefLocation2+"ffmpeg -i "+name[0]+name[1]+name[2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2], (end)?endHandler:endHandlerFake);
 			}
 		}
 	}
@@ -463,13 +475,27 @@ try {
 }
 
 function secondEncode(name,type,end) {
-type[1] = type[1].replace("-pass 1","-pass 2");
+//	type[1] = type[1].replace("-pass 1","-pass 2");
 try {
-	widget.system(prefLocation2+"ffmpeg -i "+name[0]+name[1]+" "+type[1]+" "+name[0]+type[2], (end)?endHandler:endHandlerFake);
+	alert("started pass 2");
+	widget.system(prefLocation2+"ffmpeg -passlogfile "+name[0]+name[1]+type[2]+" -pass 2 -i "+name[0]+name[1]+name[2]+" "+type[1]+" "+name[0]+name[1]+type[2], cleanupEncode(name[0]+name[1]+type[2],end)).outputString;
 //	endHandler();
 	return true;
 } catch (ex) {
-	alert("Problem encoding 2: " + ex);
+	alert("Problem encoding pass 2: " + ex);
+	showFail(event);
+	}
+}
+
+function cleanupEncode(file,end) {
+try {
+	alert("cleaning log files\n"+file);
+	alert("mv "+file+"*.log ~/.Trash/");
+	widget.system("mv "+file+"*.log ~/.Trash/", (end)?endHandler:endHandlerFake);
+//	endHandler();
+	return true;
+} catch (ex) {
+	alert("Problem cleaning up: " + ex);
 	showFail(event);
 	}
 }
