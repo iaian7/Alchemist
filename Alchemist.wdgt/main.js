@@ -277,13 +277,14 @@ function updateFeedback(event) {
 			document.getElementById("feedback").innerHTML = "Quicktime AIC";
 			break;
 		case 4:	// HTML5 formats
-			document.getElementById("feedback").innerHTML = "MP4 720/540p, OGG 720/540p, WebM 720/540p";
+//			document.getElementById("feedback").innerHTML = "MP4 720/540p, OGG 720/540p, WebM 720/540p";
+			document.getElementById("feedback").innerHTML = "MP4, OGG, WebM, 720p/540p";
 			break;
 		case 5:	// Desktop formats
 			document.getElementById("feedback").innerHTML = "MP4 720p, WMV 720p";
 			break;
 		case 6:	// Mobile devices
-			document.getElementById("feedback").innerHTML = "MP4 480/360p";
+			document.getElementById("feedback").innerHTML = "MP4 480p/360p";
 			break;
 		default:
 			document.getElementById("feedback").innerHTML = "";

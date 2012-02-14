@@ -6,7 +6,7 @@
  */
 var localizedStrings = {
     "batchText": "batch output formats",
-    "copyrightText": "©2011 John Einselen / Vectorform LLC",
+    "copyrightText": "©2012 John Einselen, Vectorform LLC",
     "dateReverseText": "date order",
     "dateSpacerText": "date",
     "dateSpacerText1": "date spacer",
@@ -43,6 +43,8 @@ var localizedStrings = {
     "successDetails": "may take a few minutes or longer, depending on video length",
     "wrong": "wrong file format\nplease try again"
 };
+
+
 
 
 
