@@ -114,7 +114,6 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     position: absolute;
-    font-size: 8pt;
     opacity: 0.5;
     height: 12px;
     left: 20px;
@@ -123,6 +122,7 @@ body {
     margin-right: auto;
     bottom: 20px;
     margin-top: auto;
+    font-size: 11px;
 }
 
 #successText {
@@ -131,7 +131,6 @@ body {
     position: absolute;
     margin-top: 0px;
     color: rgb(255, 255, 255);
-    font-size: 12pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     text-align: center;
     min-height: 28px;
@@ -142,6 +141,7 @@ body {
     font-family: 'Helvetica Neue';
     top: 30px;
     height: 40px;
+    font-size: 16px;
 }
 
 #success {
@@ -166,7 +166,6 @@ body {
     position: absolute;
     margin-top: 0px;
     color: rgb(255, 255, 255);
-    font-size: 12pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     text-align: center;
     min-height: 28px;
@@ -177,6 +176,7 @@ body {
     top: 30px;
     margin-bottom: auto;
     height: 60px;
+    font-size: 16px;
 }
 
 #successButton {
@@ -238,7 +238,6 @@ body {
     position: absolute;
     margin-top: 0px;
     color: rgb(255, 255, 255);
-    font-size: 12pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     text-align: center;
     min-height: 28px;
@@ -249,6 +248,7 @@ body {
     height: 50px;
     top: 30px;
     font-family: 'Helvetica Neue';
+    font-size: 16px;
 }
 
 #update {
@@ -264,7 +264,6 @@ body {
     position: absolute;
     margin-top: 0px;
     color: rgb(255, 255, 255);
-    font-size: 12pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     text-align: center;
     left: 0px;
@@ -274,6 +273,7 @@ body {
     height: 30px;
     font-family: 'Helvetica Neue';
     top: 30px;
+    font-size: 16px;
 }
 
 #newVersion {
@@ -283,7 +283,6 @@ body {
     margin-top: 0px;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     min-height: 0px;
-    font-size: 10pt;
     left: 0px;
     text-align: center;
     font-family: 'Helvetica Neue';
@@ -293,6 +292,7 @@ body {
     margin-bottom: auto;
     right: 0px;
     width: auto;
+    font-size: 12px;
 }
 
 #skip {
@@ -336,11 +336,11 @@ body {
     text-overflow: clip;
     height: 25px;
     font-family: 'Helvetica Neue';
-    font-size: 12px;
     margin-bottom: auto;
     right: 0px;
     width: auto;
     top: 90px;
+    font-size: 14px;
 }
 
 #location {
@@ -352,16 +352,16 @@ body {
     border-bottom-right-radius: 5px 5px;
     font-family: 'Helvetica Neue';
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.496094);
     border-color: rgb(0, 0, 0);
     border-width: 1px;
     border-style: solid;
-    font-size: 10pt;
     width: 156px;
     right: 20px;
     margin-left: auto;
     top: 20px;
     margin-bottom: auto;
+    font-size: 14px;
 }
 
 #locationText {
@@ -370,15 +370,15 @@ body {
     overflow: hidden;
     position: absolute;
     color: rgb(255, 255, 255);
-    font-size: 10pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
-    height: 19px;
-    width: 85px;
     text-align: left;
     top: 23px;
     left: 20px;
     margin-right: auto;
     margin-bottom: auto;
+    font-size: 14px;
+    width: 95px;
+    height: 20px;
 }
 
 #successDetails {
@@ -388,7 +388,6 @@ body {
     margin-top: 0px;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     min-height: 0px;
-    font-size: 10pt;
     text-align: center;
     width: auto;
     left: 20px;
@@ -398,6 +397,7 @@ body {
     top: 70px;
     height: 50px;
     color: rgb(191, 191, 191);
+    font-size: 12px;
 }
 
 #dateText {
@@ -424,7 +424,6 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     position: absolute;
-    font-size: 12pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     font-family: 'Helvetica Neue';
     text-align: left;
@@ -435,6 +434,7 @@ body {
     margin-bottom: auto;
     top: 22px;
     right: 0px;
+    font-size: 16px;
 }
 
 #image {
@@ -524,12 +524,12 @@ body {
     border-width: 0px;
     background-color: rgba(0, 0, 0, 0);
     color: rgb(255, 255, 255);
-    font-size: 10pt;
     text-align: left;
     left: 25px;
     width: 58px;
     bottom: 2px;
     margin-top: auto;
+    font-size: 13px;
 }
 
 #spacerText {
@@ -562,7 +562,7 @@ body {
     font-size: 10pt;
     text-align: center;
     border-width: 1px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.496094);
     width: 66px;
     margin-right: auto;
     margin-bottom: auto;
@@ -593,7 +593,7 @@ body {
     border-width: 1px;
     position: absolute;
     margin-top: 0px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.496094);
     border-top-left-radius: 5px 5px;
     border-top-right-radius: 5px 5px;
     border-bottom-left-radius: 5px 5px;
@@ -681,7 +681,6 @@ body {
     position: absolute;
     margin-top: 0px;
     color: rgb(255, 255, 255);
-    font-size: 12pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
     text-align: center;
     left: 20px;
@@ -692,6 +691,7 @@ body {
     width: auto;
     margin-bottom: auto;
     height: 40px;
+    font-size: 16px;
 }
 
 #startedDetails {
@@ -700,7 +700,6 @@ body {
     position: absolute;
     margin-top: 0px;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
-    font-size: 10pt;
     text-align: center;
     min-height: 30px;
     left: 20px;
@@ -711,6 +710,7 @@ body {
     color: rgb(191, 191, 191);
     font-family: 'Helvetica Neue';
     top: 70px;
+    font-size: 12px;
 }
 
 #startedButton {
@@ -733,15 +733,15 @@ body {
     overflow: hidden;
     position: absolute;
     color: rgb(255, 255, 255);
-    font-size: 10pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
-    height: 19px;
-    width: 85px;
     text-align: left;
     left: 20px;
     top: 53px;
     margin-right: auto;
     margin-bottom: auto;
+    font-size: 14px;
+    width: 95px;
+    height: 20px;
 }
 
 #location2 {
@@ -753,16 +753,16 @@ body {
     border-bottom-right-radius: 5px 5px;
     font-family: 'Helvetica Neue';
     text-align: left;
-    font-size: 10pt;
     border-width: 1px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.496094);
     width: 156px;
     right: 20px;
     margin-left: auto;
     top: 50px;
     margin-bottom: auto;
+    font-size: 14px;
 }
 
 #spacer {
@@ -778,7 +778,7 @@ body {
     font-size: 10pt;
     text-align: center;
     border-width: 1px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.496094);
     width: 66px;
     margin-right: auto;
     margin-bottom: auto;
@@ -792,15 +792,15 @@ body {
     overflow: hidden;
     position: absolute;
     color: rgb(255, 255, 255);
-    font-size: 10pt;
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
-    height: 19px;
-    width: 85px;
     text-align: left;
     left: 20px;
     top: 83px;
+    font-size: 14px;
+    width: 95px;
     margin-right: auto;
     margin-bottom: auto;
+    height: 20px;
 }
 
 #location3 {
@@ -814,14 +814,14 @@ body {
     font-family: 'Helvetica Neue';
     text-align: left;
     border-color: rgb(0, 0, 0);
-    font-size: 10pt;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.496094);
     border-width: 1px;
     width: 156px;
     right: 20px;
     margin-left: auto;
     top: 80px;
     margin-bottom: auto;
+    font-size: 14px;
 }
 
 #iaian7com {
@@ -834,13 +834,13 @@ body {
     text-align: left;
     opacity: 0.5;
     text-shadow: none;
-    font-size: 8pt;
     width: 200px;
-    line-height: 10px;
     height: 25px;
     margin-right: auto;
     bottom: 30px;
     margin-top: auto;
+    font-size: 11px;
+    line-height: 10px;
 }
 
 #dropDetail {
@@ -848,7 +848,6 @@ body {
     overflow: hidden;
     position: absolute;
     text-shadow: rgb(0, 0, 0) 0px -1px 1px;
-    font-size: 10pt;
     font-family: 'Helvetica Neue';
     color: rgb(128, 128, 128);
     text-align: left;
@@ -858,6 +857,7 @@ body {
     height: 20px;
     margin-top: auto;
     bottom: 18px;
+    font-size: 12px;
 }
 
 #box3 {
@@ -904,12 +904,12 @@ body {
     border-width: 0px;
     background-color: rgba(0, 0, 0, 0);
     color: rgb(255, 255, 255);
-    font-size: 10pt;
     text-align: left;
     left: 25px;
     width: 58px;
     bottom: 2px;
     margin-top: auto;
+    font-size: 13px;
 }
 
 #rectangleShape {
@@ -947,7 +947,6 @@ body {
     overflow: hidden;
     position: absolute;
     left: 0px;
-    font-size: 10px;
     text-align: center;
     right: 0px;
     width: auto;
@@ -955,6 +954,7 @@ body {
     top: 120px;
     margin-bottom: auto;
     color: rgb(128, 128, 128);
+    font-size: 12px;
 }
 
 .selected #feedback {
