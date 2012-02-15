@@ -374,12 +374,12 @@ body {
     text-shadow: rgb(0, 0, 0) 0px -1px 0px;
     text-align: left;
     left: 20px;
-    font-size: 14px;
     width: 95px;
     height: 20px;
     top: 24px;
     margin-right: auto;
     margin-bottom: auto;
+    font-size: 14px;
 }
 
 #successDetails {
