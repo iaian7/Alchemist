@@ -816,10 +816,10 @@ body {
     width: 200px;
     height: 25px;
     margin-right: auto;
-    bottom: 30px;
     margin-top: auto;
     font-size: 11px;
     line-height: 10px;
+    bottom: 28px;
 }
 
 #dropDetail {

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CYLastWindowPosition</key>
-	<string>{1916, 545}</string>
+	<string>{1915, 555}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -527,7 +527,7 @@
 		<array>
 			<string>view1</string>
 			<string>main</string>
-			<string>front</string>
+			<string>back</string>
 		</array>
 	</dict>
 </dict>
