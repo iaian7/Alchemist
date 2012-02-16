@@ -278,10 +278,10 @@ function updateFeedback(event) {
 			break;
 		case 4:	// HTML5 formats
 //			document.getElementById("feedback").innerHTML = "MP4 720/540p, OGG 720/540p, WebM 720/540p";
-			document.getElementById("feedback").innerHTML = "MP4, OGG, WebM, 720p/540p";
+			document.getElementById("feedback").innerHTML = "MP4, OGG, WebM 720p/540p";
 			break;
 		case 5:	// Desktop formats
-			document.getElementById("feedback").innerHTML = "MP4 720p, WMV 720p";
+			document.getElementById("feedback").innerHTML = "MP4, WMV 720p";
 			break;
 		case 6:	// Mobile devices
 			document.getElementById("feedback").innerHTML = "MP4 480p/360p";
@@ -446,8 +446,8 @@ try {
 
 	for (var i=0; i<type.length; i++) {
 		if (type[i][0]=="qt_tools") {
-			alert(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+name[2]+" "+name[0]+name[1]+type[i][2]);
-			widget.system(prefLocation+"qt_export --loadsettings="+prefLocation+type[i][1]+" "+name[0]+name[1]+name[2]+" "+name[0]+name[1]+type[i][2], (end)?endHandler:endHandlerFake);
+			alert(prefLocation+"qt_export --loadsettings="+type[i][1]+" "+name[0]+name[1]+name[2]+" "+name[0]+name[1]+type[i][2]);
+			widget.system(prefLocation+"qt_export --loadsettings="+type[i][1]+" "+name[0]+name[1]+name[2]+" "+name[0]+name[1]+type[i][2], (end)?endHandler:endHandlerFake);
 		} else if (type[i][0]=="ffmpeg2theora") {
 			alert(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+name[2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2]);
 			widget.system(prefLocation3+"ffmpeg2theora "+name[0]+name[1]+name[2]+" "+type[i][1]+" "+name[0]+name[1]+type[i][2], (end)?endHandler:endHandlerFake);
