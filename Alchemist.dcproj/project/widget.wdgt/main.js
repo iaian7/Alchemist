@@ -304,7 +304,13 @@ function dragDrop(event) {
 try {
 	uri = event.dataTransfer.getData("text/uri-list");
 	uri = uri.replace(/file:\/\/localhost/gi, "");
-	uri = uri.replace(/\%20/gi, "\\ ");
+//	uri = uri.replace(/\%20/gi, "\\ "); // Decodes and escapes spaces
+//	alert(uri);
+	uri = unescape(uri);
+//	alert(uri);
+	uri = uri.replace(/ /gi, "\\ "); // Escape just spaces (trying to do this using \s in the next replace results in multiline breakdown)
+	uri = uri.replace(/[\~\`\^\*\(\)\[\]\{\}\?\!\$\&\|\<\>\;\"'"\'"']/gi, "\\$&"); // Escape Unix command line characters (yes, you actually CAN use all of these in folder and file names!)
+//	alert(uri);
 	uri = uri.split("\n");
 	uri = uri.sort(sortAlphaNum);
 	for (var i=0; i<uri.length; i++) {
