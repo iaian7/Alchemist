@@ -149,7 +149,6 @@ function loadPref(key,value) {
 }
 
 function loadPrefs() {
-//	alert("ready!");
 	document.getElementById("type").object.setSelectedIndex(prefType);
 	document.getElementById("location").value = prefLocation;
 	document.getElementById("location2").value = prefLocation2;
@@ -406,8 +405,8 @@ try {
 	for (var i=0; i<uri.length; i++) {
 //		alert("name segments: "+uriParts[i].join("\n"));
 		var name = [uriParts[i][1],uriParts[i][2],uriParts[i][3]];
-		alert("name[0]+name[1] = "+name[0]+name[1]);
-		alert("name[2] = "+name[2]);
+//		alert("name[0]+name[1] = "+name[0]+name[1]);
+//		alert("name[2] = "+name[2]);
 
 		if (i+1==uri.length) showSuccess(event);
 		startEncode(name,type,(i+1==uri.length)?true:false);
@@ -454,11 +453,14 @@ try {
 //	endHandler();
 	return true;
 } catch (ex) {
-	alert("Problem encoding 1: " + ex);
+	alert("Problem encoding: " + ex);
 	showFail(event);
 	}
 }
 
+/**************************
+//	Unused blocks of code
+/**************************
 function secondEncode(name,type,end) {
 //	type[1] = type[1].replace("-pass 1","-pass 2");
 try {
@@ -485,22 +487,10 @@ try {
 	}
 }
 
-function endHandler(output) {
-//	alert("output = "+output.outputString);
-	alert("endHandler: "+output);
-	showMain();
-}
-
-function endHandlerFake(output) {
-//	alert("output = "+output.outputString);
-	alert("endHandlerFake: "+output);
-}
-
 function endHandler2(end) {
-	alert("endHandler, end? "+end);
+//	alert("endHandler, end? "+end);
 	if (end) showMain();
 }
-
 
 function sortName(a, b) {
 	var x = a.toLowerCase();
@@ -510,6 +500,18 @@ function sortName(a, b) {
 
 function sortNumber(a, b) {
 	return a - b;
+}
+*/
+
+function endHandler(output) {
+//	alert("output = "+output.outputString);
+//	alert("endHandler: "+output);
+	showMain();
+}
+
+function endHandlerFake(output) {
+//	alert("output = "+output.outputString);
+//	alert("endHandlerFake: "+output);
 }
 
 function sortAlphaNum(a, b) {
@@ -558,7 +560,6 @@ function showMain(event) {
 }
 
 function showStarted(event) {
-	alert("show Started panel!");
 	document.getElementById("stack").object.setCurrentView("started", true, true);
 }
 
