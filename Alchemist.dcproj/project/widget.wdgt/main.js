@@ -161,6 +161,7 @@ function loadPrefs() {
 	document.getElementById("sufBox").checked = prefSufBox;
 	document.getElementById("dateBox").checked = prefDateBox;
 	document.getElementById("dateReverseBox").checked = prefDateReverseBox;
+	updateFeedback();
 }
 
 function updatePrefs() {
@@ -269,17 +270,20 @@ function updateFeedback(event) {
 		case 3:	// Apple Intermediate Codec
 			document.getElementById("feedback").innerHTML = "Quicktime AIC";
 			break;
-		case 4:	// HTML5 formats
+		case 4:	// Web master
+			document.getElementById("feedback").innerHTML = "YouTube+Vimeo MP4";
+			break;
+		case 5:	// HTML5 formats
 			document.getElementById("feedback").innerHTML = "MP4, OGG, WebM 720p/540p";
 			break;
-		case 5:	// Desktop formats
+		case 6:	// Desktop formats
 			document.getElementById("feedback").innerHTML = "MP4, WMV 720p";
 			break;
-		case 6:	// Mobile devices
+		case 7:	// Mobile devices
 			document.getElementById("feedback").innerHTML = "MP4 480p/360p";
 			break;
 		default:
-			document.getElementById("feedback").innerHTML = "";
+			document.getElementById("feedback").innerHTML = "Error: unrecognised type";
 		}
 }
 
@@ -330,7 +334,10 @@ try {
 		case 3:	// Apple Intermediate Codec
 			type = [["qt_tools","qt_export_aic.st",".aic.mov"]];
 			break;
-		case 4:	// HTML5 formats
+		case 4:	// Web Master
+			type = [["ffmpegMultipass","-vcodec libx264 -vb 8192k -minrate 4096k -maxrate 16384k -bufsize 2048k -vf \"lutyuv=y=gammaval(0.8)\" -strict experimental -ab 384k -y",".webmaster.mp4"]];
+			break;
+		case 5:	// HTML5 formats
 			type = [
 				["ffmpegMultipass","-vcodec libx264 -vb 1536k -minrate 128k -maxrate 3072k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -y",".720p.mp4"],
 				["ffmpegMultipass","-vcodec libx264 -vb 1024k -minrate 128k -maxrate 2560k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 960x540 -strict experimental -ab 128k -y",".540p.mp4"],
@@ -342,13 +349,13 @@ try {
 				["ffmpeg","-vcodec libvpx -vb 1024k -minrate 0k -maxrate 1536k -bufsize 224k -vf \"lutyuv=y=gammaval(1.1)\" -f webm -ab 128k -s 960x540 -y",".540p.webm"]
 			];
 			break;
-		case 5:	// Desktop formats
+		case 6:	// Desktop formats
 			type = [
 				["ffmpegMultipass","-vcodec libx264 -vb 2048k -minrate 128k -maxrate 4096k -bufsize 224k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -strict experimental -ab 160k -loglevel error -y",".720p.mp4"],
 				["ffmpegMultipass","-vb 3072k -bt 2048k -vf \"lutyuv=y=gammaval(1.2)\" -s 1280x720 -ab 160k -y",".720p.wmv"]
 			];
 			break;
-		case 6:	// Mobile devices
+		case 7:	// Mobile devices
 			type = [
 				["ffmpegMultipass","-vcodec libx264 -vb 1024k -minrate 128k -maxrate 1536k -bufsize 224k -s 854x480 -strict experimental -ab 128k -y",".480p.mp4"],
 				["ffmpegMultipass","-vcodec libx264 -vb 768k -minrate 128k -maxrate 1280k -bufsize 224k -s 640x360 -strict experimental -ab 128k -y",".360p.mp4"]

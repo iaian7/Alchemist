@@ -34,10 +34,11 @@ var dashcodePartSpecs = {
     "successDetails": { "text": "successDetails", "view": "DC.Text" },
     "successText": { "text": "success", "view": "DC.Text" },
     "text": { "text": "copyrightText", "view": "DC.Text" },
-    "type": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "name": "type", "onchange": "updateType", "options": [["ProRes422", "0"], ["HDV 1080p", "1"], ["HDV 720p", "2"], ["Apple Intermediate Codec", "3"], ["HTML5 formats", "4"], ["Desktop formats", "5"], ["Mobile devices", "6"]], "rightImageWidth": 16, "view": "DC.View" },
+    "type": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "name": "type", "onchange": "updateType", "options": [["ProRes422", "0"], ["HDV 1080p", "1"], ["HDV 720p", "2"], ["Apple Intermediate Codec", "3"], ["Web Master", "4"], ["HTML5 formats", "5"], ["Desktop formats", "6"], ["Mobile devices", "7"]], "rightImageWidth": 16, "view": "DC.View" },
     "wrongButton": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showMain", "rightImageWidth": 5, "text": "done", "view": "DC.View" },
     "wrongText": { "text": "wrong", "view": "DC.Text" }
 };
+
 
 
 
